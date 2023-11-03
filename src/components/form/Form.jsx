@@ -139,7 +139,7 @@ function Form() {
                             <div className={styles.inputBoxImgBox}>
                                 <p>{newActivity.paises.length}</p>
                                 <img src={flagIcon} alt="" />
-                                <p onClick={handleMiniTable} id={styles.inputBoxImgBoxAfter}>Países seleccionados</p>
+                                <p onClick={handleMiniTable} id={styles.inputBoxImgBoxAfter}>Ver países seleccionados</p>
                                 <div className={styles.seleccionPaisContainer} id={displayedTable ? '' : styles.hidden}>
                                     {renderCountries?.map((country, i) => {
                                         const name = country.nombre;
@@ -184,7 +184,7 @@ function Form() {
                     </div>
                     <div className={styles.duracionInput}>
                         <label className={styles.inputsLabel} htmlFor="">Duración (horas)</label>
-                        <input onChange={handleInput} id='duracion' type="number" placeholder='Ej. 3' />
+                        <input onChange={handleInput} id='duracion' type="number" min='0' max='5' placeholder='Ej. 3' />
                     </div>
                     <div className={styles.temporadaInput}>
                         <label htmlFor="">Temporada</label>

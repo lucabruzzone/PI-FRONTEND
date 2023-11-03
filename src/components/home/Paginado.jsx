@@ -1,10 +1,14 @@
 import styles from './Paginado.module.css';
+import PropTypes from 'prop-types';
 import leftImg from '../../img/circle-left-regular.svg';
 import rightImg from '../../img/circle-right-regular.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionSetPage } from '../../redux/actions';
 
 function Paginado({ totalPages }) {
+    Paginado.propTypes = {
+        totalPages: PropTypes.number.isRequired,// Ejemplo de otra prop con validación
+    };
     const dispatch = useDispatch()
     const page = useSelector(state => state.page);
 

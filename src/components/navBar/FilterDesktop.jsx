@@ -65,7 +65,7 @@ function FilterDesktop() {
                 <label className={styles.actividad} htmlFor="">Actividad</label>
                 <ul className={styles.listUl} name="actividad" id="actividad">
                     {activitiesAvailable.length && activitiesAvailable.map((activity, i) => {
-                        return <li key={i} onClick={handleSelect} title={activity.nombre} id='Actividad' className={activitiesFilter.includes(activity.nombre) && styles.selectionOn}>{activity.nombre}</li>
+                        return <p key={i} onClick={handleSelect} title={activity.nombre} id='Actividad' className={activitiesFilter.includes(activity.nombre) ? styles.selectionOn : styles.selectionOff}>{activity.nombre}</p>
                     })}
                 </ul>
             </section>
@@ -73,32 +73,32 @@ function FilterDesktop() {
             <section id={styles.eachSection} className={difficultyFilter.length ? styles.borderSelected : styles.borderHidden}>
                 <label className={styles.dificultad} htmlFor="">Dificultad</label>
                 <ul className={styles.listUl} name="Dificultad" id="Dificultad">
-                    <li onClick={handleSelect} title="1" id='Dificultad' className={difficultyFilter.includes(1) && styles.selectionOn}>1 Muy Baja</li>
-                    <li onClick={handleSelect} title="2" id='Dificultad' className={difficultyFilter.includes(2) && styles.selectionOn}>2 Baja</li>
-                    <li onClick={handleSelect} title="3" id='Dificultad' className={difficultyFilter.includes(3) && styles.selectionOn}>3 Media</li>
-                    <li onClick={handleSelect} title="4" id='Dificultad' className={difficultyFilter.includes(4) && styles.selectionOn}>4 Media Alta</li>
-                    <li onClick={handleSelect} title="5" id='Dificultad' className={difficultyFilter.includes(5) && styles.selectionOn}>5 Alta</li>
+                    <p onClick={handleSelect} title="1" id='Dificultad' className={difficultyFilter.includes(1) ? styles.selectionOn : styles.selectionOff}>1 Muy Baja</p>
+                    <p onClick={handleSelect} title="2" id='Dificultad' className={difficultyFilter.includes(2) ? styles.selectionOn : styles.selectionOff}>2 Baja</p>
+                    <p onClick={handleSelect} title="3" id='Dificultad' className={difficultyFilter.includes(3) ? styles.selectionOn : styles.selectionOff}>3 Media</p>
+                    <p onClick={handleSelect} title="4" id='Dificultad' className={difficultyFilter.includes(4) ? styles.selectionOn : styles.selectionOff}>4 Media Alta</p>
+                    <p onClick={handleSelect} title="5" id='Dificultad' className={difficultyFilter.includes(5) ? styles.selectionOn : styles.selectionOff}>5 Alta</p>
                 </ul>
             </section>
 
             <section id={styles.eachSection} className={seasonFilter.length ? styles.borderSelected : styles.borderHidden}>
                 <label className={styles.temporada} htmlFor="">Temporada</label>
                 <ul className={styles.listUl} name="Temporada" id="Temporada">
-                    <li onClick={handleSelect} title="Verano" id='Temporada' className={seasonFilter.includes('verano') && styles.selectionOn}>Verano</li>
-                    <li onClick={handleSelect} title="Otoño" id='Temporada' className={seasonFilter.includes('otoño') && styles.selectionOn}>Otoño</li>
-                    <li onClick={handleSelect} title="Invierno" id='Temporada' className={seasonFilter.includes('invierno') && styles.selectionOn}>Invierno</li>
-                    <li onClick={handleSelect} title="Primavera" id='Temporada' className={seasonFilter.includes('primavera') && styles.selectionOn}>Primavera</li>
+                    <p onClick={handleSelect} title="Verano" id='Temporada' className={seasonFilter.includes('verano') ? styles.selectionOn : styles.selectionOff}>Verano</p>
+                    <p onClick={handleSelect} title="Otoño" id='Temporada' className={seasonFilter.includes('otoño') ? styles.selectionOn : styles.selectionOff}>Otoño</p>
+                    <p onClick={handleSelect} title="Invierno" id='Temporada' className={seasonFilter.includes('invierno') ? styles.selectionOn : styles.selectionOff}>Invierno</p>
+                    <p onClick={handleSelect} title="Primavera" id='Temporada' className={seasonFilter.includes('primavera') ? styles.selectionOn : styles.selectionOff}>Primavera</p>
                 </ul>
             </section>
 
             <section id={styles.eachSection} className={continentsFilter.length ? styles.borderSelected : styles.borderHidden}>
                 <label className={styles.continente} htmlFor="">Continente</label>
                 <ul className={styles.listUl} name="Continente" id="Continente">
-                    <li onClick={handleSelect} title="Americas" id='Continente' className={continentsFilter.includes('americas') && styles.selectionOn}>América</li>
-                    <li onClick={handleSelect} title="Europe" id='Continente' className={continentsFilter.includes('europe') && styles.selectionOn}>Europa</li>
-                    <li onClick={handleSelect} title="Asia" id='Continente' className={continentsFilter.includes('asia') && styles.selectionOn}>Asia</li>
-                    <li onClick={handleSelect} title="Africa" id='Continente' className={continentsFilter.includes('africa') && styles.selectionOn}>Africa</li>
-                    <li onClick={handleSelect} title="Oceania" id='Continente' className={continentsFilter.includes('oceania') && styles.selectionOn}>Oceanía</li>
+                    <p onClick={handleSelect} title="Americas" id='Continente' className={continentsFilter.includes('americas') ? styles.selectionOn : styles.selectionOff}>América</p>
+                    <p onClick={handleSelect} title="Europe" id='Continente' className={continentsFilter.includes('europe') ? styles.selectionOn : styles.selectionOff}>Europa</p>
+                    <p onClick={handleSelect} title="Asia" id='Continente' className={continentsFilter.includes('asia') ? styles.selectionOn : styles.selectionOff}>Asia</p>
+                    <p onClick={handleSelect} title="Africa" id='Continente' className={continentsFilter.includes('africa') ? styles.selectionOn : styles.selectionOff}>Africa</p>
+                    <p onClick={handleSelect} title="Oceania" id='Continente' className={continentsFilter.includes('oceania') ? styles.selectionOn : styles.selectionOff}>Oceanía</p>
                 </ul>
             </section>
         </div>

@@ -63,9 +63,9 @@ function Home() {
                     </div>
                 </div>
             </section>
-            <section className={styles.paginado1}>
-                <Paginado page={page} totalPages={totalPages} />
-            </section>
+            {/* <section className={styles.paginado1}>
+                <Paginado totalPages={totalPages} />
+            </section> */}
             <p id={styles.seleccionaUnPais}>Selecciona un país:</p>
             {renderCountries.length ?
                 <section className={styles.cardsView}>
@@ -94,7 +94,7 @@ function Home() {
                 </div>
             }
             <section className={styles.paginado2}>
-                <Paginado page={page} totalPages={totalPages} />
+                <Paginado totalPages={totalPages} />
             </section>
         </div>
     );

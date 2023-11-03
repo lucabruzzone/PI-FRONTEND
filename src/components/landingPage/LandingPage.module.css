@@ -32,9 +32,10 @@
     background-position: top;
     background-size: cover;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    /* padding-bottom: 200px; */
+    justify-content: flex-start;
+    padding-top: 200px;
     overflow: hidden;
 }
 
@@ -53,22 +54,9 @@
     align-items: center;
 }
 
-.imgContainer {
-    width: 70%;
-    /* height: 50px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .buttonContainer p {
     font-weight: var(--main-font-weight);
     font-size: 35px;
-}
-
-.img{
-    height: 100%;
-    width: 40px;
 }
 
 .button {

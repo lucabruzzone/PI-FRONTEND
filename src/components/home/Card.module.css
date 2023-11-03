@@ -105,8 +105,9 @@
 }
 
 .countryName {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: var(--main-font-weight);
+    line-height: 20px;
     /* color: var(--gray-font-color); */
 }
 

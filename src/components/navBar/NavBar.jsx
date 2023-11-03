@@ -102,14 +102,11 @@ function NavBar() {
                             </NavLink>
                         </li>
 
-                        <li className={styles.li} onClick={handlerFilters}>
-                            <NavLink className={styles.navLinkMedia}>
+                        <li className={styles.li}>
+                            <NavLink className={styles.navLinkMedia} onClick={handlerFilters}>
                                 <button className={styles.filtros}>Filtros</button>
                             </NavLink>
                         </li>
-                        {/* <div id={styles.filterMobile} className={globalDisplayFilters ? '' : styles.filterMobileHidden}>
-                            <FilterMobile />
-                        </div> */}
                         <div id={styles.filterMobile} className={globalDisplayFilters ? styles.filterMobileDisplayed : styles.filterMobileHidden}>
                             <FilterDesktop />
                         </div>

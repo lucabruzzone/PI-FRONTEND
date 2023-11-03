@@ -44,7 +44,7 @@ function App() {
         <Route path={`${DETAIL}/:id`} element={<Detail />} />
         <Route path={SUCCESSFORM} element={<SuccessForm />} />
       </Routes>
-      {(location.pathname !== '/' && location.pathname !== SUCCESSFORM) && <Footer />}
+      {(location.pathname !== '/' && location.pathname !== SUCCESSFORM && location.pathname !== FORM) && <Footer />}
     </div>
   )
 }

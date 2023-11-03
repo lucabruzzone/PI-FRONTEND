@@ -32,10 +32,6 @@ function LandingPage() {
     return (
         <div className={styles.mainView}>
             <div className={styles.buttonContainer}>
-                {/* <div className={styles.imgContainer}>
-                    <img className={styles.img} src={appIcon} alt="" />
-                    <p>Countries</p>
-                </div> */}
                 <NavLink className={styles.navLink} to={HOME}>
                     <button className={styles.button}>Empezar</button>
                 </NavLink>

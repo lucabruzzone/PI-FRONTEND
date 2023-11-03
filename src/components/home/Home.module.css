@@ -38,19 +38,20 @@
 
 .filterSelectionsView{
     width: 100%;
-    max-width: 1000px;
+    /* max-width: 1000px; */
     margin-top: 20px;
     padding: var(--view-side-padding);
-    /* padding-top: 15px; */
+    background-color: var(--light-bgcolor);
 }
 
 .filterSelectionsContainer {
+    margin: auto;
+    max-width: 1000px;
     position: relative;
     width: 100%;
-    min-height: 125px;
+    min-height: 150px;
     padding: var(--view-side-padding);
     padding-top: 10px;
-    background-color: var(--light-bgcolor);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -58,7 +59,7 @@
 
 .filterSelectionsContainer button{
     border: none;
-    font-size: 15px;
+    font-size: 18px;
     color: var(--main-border-color);
     background-color: transparent;
     cursor: pointer;
@@ -112,7 +113,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
+    padding: 4px 0;
+    font-size: 15px;
 }
 
 .activitiesOnlyDown::after{
@@ -135,11 +137,11 @@
 #seleccionaUnPais{
     width: 100%;
     max-width: 1000px;
-    margin: 10px 0;
+    margin: 30px 0 10px 0;
     padding: var(--view-side-padding);
     color: var(--gray-font-color);
     font-size: 22px;
-    text-align: left;
+    text-align: center;
 }
 
 .cardsView{
@@ -167,6 +169,12 @@
     /* grid-auto-rows: 160px; */
 }
 
+@media only screen and (max-width: 500px) {
+    .cardsContainer {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+}
+
 .cardComponentBox {
     height: 160px;
     /* max-width: 260px; */
@@ -176,18 +184,17 @@
     border-radius: 25px;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 500px) {
     .cardComponentBox {
-        height: 200px;
-
+        height: 100px;
     }
 }
 
 .paginado1{
-    width: 60%;
-    max-width: 400px;
+    width: 70%;
+    max-width: 500px;
     margin: auto;
-    height: 40px;
+    height: 45px;
     margin-top: 50px;
     margin-bottom: 20px;
     background-color: var(--off-border-color);
@@ -197,10 +204,10 @@
 }
 
 .paginado2{
-    width: 60%;
-    max-width: 400px;
+    width: 70%;
+    max-width: 500px;
     margin: auto;
-    height: 40px;
+    height: 45px;
     margin-bottom: 100px;
     background-color: var(--off-border-color);
     border: 1px solid var(--off-border-color);

@@ -71,6 +71,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 25px;
     padding: 20px 0;
 }
 
@@ -88,7 +89,7 @@
 }
 
 .inputsLabel {
-    font-size: var(--main-font-size);
+    font-size: 18px;
     font-weight: var(--main-font-weight);
     color: var(--gray-font-color);
     padding-left: 12px;
@@ -102,19 +103,24 @@
 }
 
 .paisNombreInput input {
-    height: 30px;
-    width: 65%;
+    height: 50px;
+    width: 100%;
     min-width: 180px;
     padding: 0 10px;
-    border: 2px solid var(--main-border-color);
+    border: 1px solid var(--main-border-color);
     border-radius: 50px;
+    font-size: 18px;
     font-weight: var(--main-font-weight);
+}
+
+.paisNombreInput input::placeholder{
+    font-size: 18px;
 }
 
 .inputBoxImgBox {
     position: relative;
-    height: 20px;
-    width: 65%;
+    height: 30px;
+    width: 100%;
     min-width: 130px;
     padding: 0 5px;
     display: flex;
@@ -125,13 +131,14 @@
 
 .inputBoxImgBox p {
     margin: 0;
+    height: 100%;
     width: 8px;
-    font-size: 12px;
-    font-weight: var(--main-font-weight);
+    font-size: 18px;
+    /* font-weight: var(--main-font-weight); */
 }
 
 .inputBoxImgBox img {
-    height: 10px;
+    height: 15px;
 }
 
 #inputBoxImgBoxAfter {
@@ -167,7 +174,7 @@
 
 .countrySelectionRow {
     width: 100%;
-    min-height: 25px;
+    min-height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -194,25 +201,26 @@
 .falseDiv {
     position: relative;
     height: 0;
-    width: 65%;
+    width: 100%;
 }
 
 .selectedCountries {
     z-index: 14;
     position: absolute;
     top: 0;
-    left: 25px;
+    left: 0;
     background-color: var(--gray-bgcolor);
     border-radius: var(--main-border-radius);
     box-shadow: var(--main-box-shadow);
-    width: 160px;
+    /* width: 160px; */
+    width: 100%;
     max-height: 300px;
     overflow-y: scroll;
 }
 
 .selectedCountriesRow {
     width: 100%;
-    min-height: 25px;
+    min-height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -258,8 +266,10 @@
 .numberBox {
     display: flex;
     align-items: center;
-    height: 30px;
+    height: 50px;
     /* width: 180px; */
+    width: 100%;
+    min-width: 180px;
     border: 1px solid var(--main-border-color);
     border-radius: 50px;
     overflow: hidden;
@@ -268,8 +278,8 @@
 .numberBox p {
     margin: 0;
     height: 100%;
-    width: 35px;
-    font-size: var(--main-font-size);
+    flex: 1;
+    font-size: 18px;
     font-weight: var(--main-font-weight);
     border-right: 1px solid rgba(128, 128, 128, 0.364);
     display: flex;
@@ -300,12 +310,18 @@
 }
 
 .duracionInput input {
+    height: 40px;
     width: 60px;
     border: 1px solid var(--main-border-color);
     border-radius: 5px;
+    font-size: 18px;
     font-weight: var(--main-font-weight);
     padding: 3px;
     outline: none;
+}
+
+.duracionInput input::placeholder{
+    font-size: 18px;
 }
 
 
@@ -315,18 +331,21 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
+    min-width: 180px;
 }
 
 .temporadaInput label {
     font-size: var(--main-font-size);
     font-weight: var(--main-font-weight);
     color: var(--gray-font-color);
+    font-size: 18px;
     padding-left: 12px;
     margin-bottom: 3px;
 }
 
 .temporadaBox {
-    width: 200px;
+    width: 100%;
     border: 1px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
     overflow: hidden;
@@ -337,7 +356,7 @@
     width: 100%;
     margin: 0;
     padding: 2px 10px;
-    font-size: var(--main-font-size);
+    font-size: 18px;
     font-weight: var(--main-font-weight);
     border-bottom: 1px solid rgba(128, 128, 128, 0.364);
     cursor: pointer;
@@ -360,6 +379,8 @@
 #submitButton {
     margin-top: 20px;
     padding: 5px 10px;
+    height: 50px;
+    width: auto;
     font-size: 17px;
     border-radius: 1000px;
     align-items: center;

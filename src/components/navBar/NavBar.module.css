@@ -70,6 +70,12 @@
     cursor: pointer;
 }
 
+@media only screen and (max-width: 700px) {
+    .countriesIcon {
+        display: none;
+    }
+}
+
 .CountriesTitle{
     height: 100%;
     font-size: 35px;
@@ -91,6 +97,12 @@
     border-radius: var(--high-border-radius);
     background-color: var(--light-bgcolor);
     overflow: hidden;
+}
+
+@media only screen and (max-width: 700px) {
+    .searchBar {
+        margin-left: 0;
+    }
 }
 
 .searchBar img{
@@ -300,6 +312,7 @@ li {
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     border: 2px solid transparent;
     border-radius: var(--high-border-radius);
     background-color: white;
@@ -307,6 +320,12 @@ li {
 
 .li:hover {
     border: 2px solid var(--main-border-color);
+}
+
+@media only screen and (max-width: 700px) {
+    .li:hover {
+        border: 2px solid transparent;
+    }
 }
 
 #navLinkMobileLanding{
@@ -320,7 +339,7 @@ li {
     color: var(--gray-font-color);
 }
 
-.navLinkMedia:hover{
+.navLinkMedia button:hover{
     color: var(--hover-font-color);
 }
 
