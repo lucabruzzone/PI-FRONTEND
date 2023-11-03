@@ -1,0 +1,76 @@
+.view{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    /* height: 320px; */
+}
+
+.bigContainer{
+    width: 90%;
+    max-width: 600px;
+}
+
+.bigContainer h1{
+    padding: 15px 0 0 0;
+}
+
+.comentario{
+    color: var(--main-border-color);
+    font-weight: var(--main-font-weight);
+    margin-bottom: 30px;
+}
+
+.textos a{
+    color: rgb(186, 171, 0);
+    text-decoration: none;
+}
+
+.textos a:hover{
+    text-decoration: underline;
+}
+
+.parrafo{
+    line-height: 22px;
+    font-weight: 500;
+}
+
+.parrafo a{
+    color: rgb(186, 171, 0);
+}
+
+.textos ol{
+    padding-left: 0;
+    text-align: left;
+    width: max-content;
+    margin: 40px auto 20px auto;
+}
+
+.textos li{
+    list-style-type: decimal;
+    margin: 4px 0;
+}
+
+.contacto{
+    padding: 15px 0;
+}
+
+.contacto p{
+    margin: 0;
+    font-size: 15px;
+}
+
+.contacto a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.contacto a:hover{
+    text-decoration: underline;
+}
+
+.year{
+    font-size: 14px;
+    margin: 60px 0 5px 0;
+}

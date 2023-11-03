@@ -1,0 +1,120 @@
+:root {
+    --dark-bg-color: #181818;
+    --light-bg-color: white;
+    --hover-bg-color: rgb(235, 235, 235);
+    --hover2-bg-color: rgb(40, 119, 187);
+
+    --hover-font-color: var(--main-border-color);
+    --hover-font-color-yellow: #ffd43b;
+    --dark-font-color: #181818;
+    --light-font-color: white;
+    --gray-font-color: #181818b6;
+    --main-font-weight: 600;
+    --main-font-size: 14px;
+
+    --main-border-color: rgb(0, 99, 185);
+    --off-border-color: var(--hover-bg-color);
+    --main-border-radius: 10px;
+
+    --off-opacity: .7;
+    --on-opacity: 1;
+}
+
+#mainContainer {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+#eachSection {
+    border-radius: var(--main-border-radius);
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: var(--gray-font-color);
+    background-color: var(--light-bg-color);
+}
+
+@media only screen and (max-width: 700px) {
+    #eachSection {
+        min-width: 200px;
+    }
+}
+
+#eachSection label {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px 10px;
+    gap: 30px;
+    font-size: 18px;
+    color: black;
+}
+
+.borderSelected{
+    border: 2px solid var(--main-border-color);
+}
+
+.borderHidden{
+    border: 2px solid transparent;
+    /* border: 2px solid var(--hover-border-color); */
+}
+
+.borderHidden:hover{
+    border: 2px solid var(--main-border-color);
+}
+
+.actividad::before{
+    content: url(../../img/mountain-city-solid.svg);
+    width: var(--main-font-size);
+    opacity: var(--off-opacity);
+}
+.dificultad::before{
+    content: url(../../img/star-solid.svg);
+    width: var(--main-font-size);
+    opacity: var(--off-opacity);
+}
+.temporada::before{
+    content: url(../../img/cloud-sun-rain-solid.svg);
+    width: var(--main-font-size);
+    opacity: var(--off-opacity);
+}
+.continente::before{
+    content: url(../../img/earth-americas-solid.svg);
+    width: var(--main-font-size);
+    opacity: var(--off-opacity);
+}
+
+.listUl{
+    overflow: scroll;
+}
+
+.selectionOn{
+    background-color: var(--main-border-color);
+    color: var(--light-font-color);
+}
+
+.listUl li{
+    cursor: pointer;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: var(--main-font-weight);
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.listUl li:hover{
+    background-color: var(--main-border-color);
+    color: var(--light-font-color);
+}

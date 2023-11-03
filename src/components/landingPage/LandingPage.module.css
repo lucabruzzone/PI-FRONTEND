@@ -1,0 +1,89 @@
+:root {
+    --dark-bg-color: #181818;
+    --light-bg-color: white;
+    --hover-bg-color: rgb(235, 235, 235);
+
+    --hover-font-color: var(--main-border-color);
+    --dark-font-color: #181818;
+    --light-font-color: white;
+    --main-font-weight: 600;
+    --main-font-size: 14px;
+
+    --main-border-color: rgb(0, 99, 185);
+    --off-border-color: var(--hover-bg-color);
+    --main-border-radius: 10px;
+    --main-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.352);
+
+    --off-opacity: .7;
+    --on-opacity: 1;
+
+    --button-main-color: #0066ff;
+    --button-hover-color: #0057da;
+}
+
+.mainView {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom,
+            rgba(104, 167, 250, 0.546),
+            rgba(255, 255, 255, 0.297)), url('../../img/countries.png');
+    background-position: top;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding-bottom: 200px; */
+    overflow: hidden;
+}
+
+.videoContainer {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgContainer {
+    width: 70%;
+    /* height: 50px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonContainer p {
+    font-weight: var(--main-font-weight);
+    font-size: 35px;
+}
+
+.img{
+    height: 100%;
+    width: 40px;
+}
+
+.button {
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    background: var(--button-main-color);
+    color: white;
+    height: 70px;
+    width: 300px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.button:hover {
+    box-shadow: var(--main-box-shadow);
+    background: var(--button-hover-color);
+}

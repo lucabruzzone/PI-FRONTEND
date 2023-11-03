@@ -1,0 +1,385 @@
+.mainView {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--view-side-padding);
+    background-color: var(--gray-bgcolor);
+    padding-top: 30px;
+    padding-bottom: 100px;
+}
+
+.mainContainer {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    /* height: 80%; */
+    background-color: var(--light-bgcolor);
+    border-radius: var(--main-border-radius);
+    /* box-shadow: var(--main-box-shadow); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainContainer p {
+    width: 85%;
+    font-size: 22px;
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 700px) {
+    .mainContainer p {
+        text-align: left;
+    }
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    border: 2px solid transparent;
+    border-radius: 1000px;
+    background-color: inherit;
+    height: 30px;
+    padding: 0 8px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.closeButton:hover {
+    background-color: var(--main-border-color);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+/* INPUT SECTION */
+
+.inputsContainer {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
+}
+
+.inputsContainer input::placeholder {
+    font-weight: 400;
+    opacity: .6;
+}
+
+.paisNombreInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.inputsLabel {
+    font-size: var(--main-font-size);
+    font-weight: var(--main-font-weight);
+    color: var(--gray-font-color);
+    padding-left: 12px;
+    margin-bottom: 3px;
+}
+
+.inputBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.paisNombreInput input {
+    height: 30px;
+    width: 65%;
+    min-width: 180px;
+    padding: 0 10px;
+    border: 2px solid var(--main-border-color);
+    border-radius: 50px;
+    font-weight: var(--main-font-weight);
+}
+
+.inputBoxImgBox {
+    position: relative;
+    height: 20px;
+    width: 65%;
+    min-width: 130px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    color: var(--main-border-color);
+    gap: 5px;
+}
+
+.inputBoxImgBox p {
+    margin: 0;
+    width: 8px;
+    font-size: 12px;
+    font-weight: var(--main-font-weight);
+}
+
+.inputBoxImgBox img {
+    height: 10px;
+}
+
+#inputBoxImgBoxAfter {
+    cursor: pointer;
+    width: auto;
+}
+
+#inputBoxImgBoxAfter:hover {
+    text-decoration: underline;
+}
+
+
+/* SELECCION PAÍSES CONTAINER */
+
+#hidden {
+    display: none;
+}
+
+.seleccionPaisContainer {
+    z-index: 15;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--gray-bgcolor);
+    border: 2px solid var(--gray-bgcolor);
+    border-radius: var(--main-border-radius);
+    box-shadow: var(--main-box-shadow);
+    width: 100%;
+    min-width: 180px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.countrySelectionRow {
+    width: 100%;
+    min-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px 0 10px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.countrySelectionRow:hover {
+    color: black;
+}
+
+.countrySelectionRow p {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* PAÍSES SELECCIONADOS CARRITO */
+
+.falseDiv {
+    position: relative;
+    height: 0;
+    width: 65%;
+}
+
+.selectedCountries {
+    z-index: 14;
+    position: absolute;
+    top: 0;
+    left: 25px;
+    background-color: var(--gray-bgcolor);
+    border-radius: var(--main-border-radius);
+    box-shadow: var(--main-box-shadow);
+    width: 160px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.selectedCountriesRow {
+    width: 100%;
+    min-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--gray-bgcolor);
+    padding: 0 10px;
+}
+
+.selectedCountriesRow:hover{
+    background-color: var(--hover-border-color);
+}
+
+.selectedCountriesRow p{
+    margin: 0;
+    width: auto;
+    font-size: var(--main-font-size);
+    color: var(--gray-font-color);
+    font-size: 12px;
+    font-weight: var(--main-font-weight);
+}
+
+#deleteSelection{
+    font-size: 15px;
+    color: var(--main-border-color);
+    cursor: pointer;
+}
+
+#deleteSelection:hover{
+    color: black;
+}
+
+
+
+/* DIFICULTAD */
+
+.dificultadInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.numberBox {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    /* width: 180px; */
+    border: 1px solid var(--main-border-color);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.numberBox p {
+    margin: 0;
+    height: 100%;
+    width: 35px;
+    font-size: var(--main-font-size);
+    font-weight: var(--main-font-weight);
+    border-right: 1px solid rgba(128, 128, 128, 0.364);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.numberBox p:hover {
+    background-color: var(--main-border-color);
+    color: white;
+}
+
+.difOn {
+    background-color: var(--main-border-color);
+    color: var(--light-font-color);
+}
+
+
+/* DURACION */
+
+.duracionInput {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.duracionInput input {
+    width: 60px;
+    border: 1px solid var(--main-border-color);
+    border-radius: 5px;
+    font-weight: var(--main-font-weight);
+    padding: 3px;
+    outline: none;
+}
+
+
+/* TEMPORADA */
+
+.temporadaInput {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.temporadaInput label {
+    font-size: var(--main-font-size);
+    font-weight: var(--main-font-weight);
+    color: var(--gray-font-color);
+    padding-left: 12px;
+    margin-bottom: 3px;
+}
+
+.temporadaBox {
+    width: 200px;
+    border: 1px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    overflow: hidden;
+    text-align: left;
+}
+
+.temporadaBox p {
+    width: 100%;
+    margin: 0;
+    padding: 2px 10px;
+    font-size: var(--main-font-size);
+    font-weight: var(--main-font-weight);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.364);
+    cursor: pointer;
+}
+
+.temporadaBox p:hover {
+    background-color: var(--main-border-color);
+    color: white;
+}
+
+.tempOn {
+    background-color: var(--main-border-color);
+    color: var(--light-font-color);
+}
+
+
+
+/* SUBMIT BUTTON */
+
+#submitButton {
+    margin-top: 20px;
+    padding: 5px 10px;
+    font-size: 17px;
+    border-radius: 1000px;
+    align-items: center;
+    display: flex;
+}
+
+.submitButtonOff {
+    border: none;
+    background-color: rgba(128, 128, 128, 0.557);
+    color: white;
+    cursor: not-allowed;
+}
+
+.submitButtonOn {
+    border: 1px solid var(--main-border-color);
+    background-color: var(--main-border-color);
+    color: white;
+    cursor: pointer;
+}
+
+.submitButtonOn:hover {
+    background-color: rgb(40, 119, 187);
+}

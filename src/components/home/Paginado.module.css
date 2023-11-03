@@ -1,0 +1,57 @@
+.mainView{
+    width: 100%;
+    height: 100%;
+    background-color: var(--light-bgcolor);
+    display: flex;
+}
+
+#arrows{
+    flex: 0;
+    padding: 7px;
+    opacity: .7;
+    cursor: pointer;
+}
+
+#arrows:hover{
+    opacity: 1;
+}
+
+.leftArrow{
+    border-right: 1px solid var(--off-border-color);
+}
+
+.rightArrow{
+    border-left: 1px solid var(--off-border-color);
+}
+
+.pagesBox{
+    height: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagesSubBox{
+    height: 100%;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagesSubBox input{
+    width: 30px;
+    height: 70%;
+    text-align: center;
+    border: 1px solid var(--main-border-color);
+    border-radius: 5px;
+}
+
+.pagesSubBox p{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
