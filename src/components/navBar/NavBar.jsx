@@ -7,15 +7,14 @@ import axios from 'axios';
 import { HOME, FORM, URL, COUNTRY } from '../../utils/pathroutes';
 import { useNavigate, useLocation, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { actionDisplayMenuBar, actionDisplayFilters, actionRenderCountries } from '../../redux/actions';
+import { actionDisplayMenuBar, actionDisplayFilters, actionRenderCountries, actionDisplayMobileFilters } from '../../redux/actions';
 
 function NavBar() {
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [mobileFiltersDisplay, setMobileFiltersDisplay] = useState(false);
     const globalDisplayMenuBar = useSelector(state => state.displayMenuBar);
+    const displayFiltersMobile = useSelector(state => state.displayFiltersMobile);
     const globalDisplayFilters = useSelector(state => state.displayFilters);
     const initialCountries = useSelector(state => state.initialCountries);
 
@@ -36,14 +35,14 @@ function NavBar() {
     }
 
     function handleMediaFilter() { // abre o cierra los filtros en mobile size
-        setMobileFiltersDisplay(!mobileFiltersDisplay);
+        dispatch(actionDisplayMobileFilters(!displayFiltersMobile));
     }
 
     function handlerFilters() { // acá abrimos o cerramos al mismo tiempo, el menu en mobile size y los filtros en desktop size 
         dispatch(actionDisplayFilters(!globalDisplayFilters));
         dispatch(actionDisplayMenuBar(!globalDisplayMenuBar));
-        if (mobileFiltersDisplay) { // si esque sigue abierto el box de filtros en mobile size, lo cerramos para que no genere problemas
-            setMobileFiltersDisplay(!mobileFiltersDisplay);
+        if (displayFiltersMobile) { // si esque sigue abierto el box de filtros en mobile size, lo cerramos para que no genere problemas
+            dispatch(actionDisplayMobileFilters(!displayFiltersMobile));
         }
     }
 
@@ -113,7 +112,7 @@ function NavBar() {
                             </li>
                         </ul>
                     </div>
-                    <div id={styles.filterMobile} className={mobileFiltersDisplay ? styles.filterMobileDisplayed : styles.filterMobileHidden}>
+                    <div id={styles.filterMobile} className={displayFiltersMobile ? styles.filterMobileDisplayed : styles.filterMobileHidden}>
                         <FilterDesktop />
                     </div>
                 </div>

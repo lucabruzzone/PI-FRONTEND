@@ -1,6 +1,7 @@
 import {
     SET_PAGE,
     SET_DISPLAY_MENU_BAR,
+    SET_DISPLAY_MOBILE_FILTERS,
     SET_DISPLAY_FILTERS,
     INITIAL_COUNTRIES,
     ACTIVITIES_AVAILABLES,
@@ -19,6 +20,10 @@ export const actionSetPage = (value) => { // action para setear true o false si 
 
 export const actionDisplayMenuBar = (value) => { // action para setear true o false si está abierto o cerrado el menu mobile
     return { type: SET_DISPLAY_MENU_BAR, payload: value }
+}
+
+export const actionDisplayMobileFilters = (value) => { // action para setear true o false si está abierta o cerrada la sección de filtros
+    return { type: SET_DISPLAY_MOBILE_FILTERS, payload: value }
 }
 
 export const actionDisplayFilters = (value) => { // action para setear true o false si está abierta o cerrada la sección de filtros

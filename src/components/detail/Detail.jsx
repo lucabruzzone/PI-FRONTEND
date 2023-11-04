@@ -2,7 +2,7 @@ import axios from 'axios';
 import styles from './Detail.module.css';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { actionDisplayMenuBar, actionDisplayFilters } from '../../redux/actions';
+import { actionDisplayMenuBar, actionDisplayFilters, actionDisplayMobileFilters } from '../../redux/actions';
 import { useParams } from 'react-router-dom';
 import { URL, ACTIVITIES_BY_COUNTRY } from '../../utils/pathroutes';
 import Loading from '../loading/Loading';
@@ -35,6 +35,7 @@ function Detail() {
         //acá nos aseguramos de que el menú desplegable y los filtros no se abran indeseablemente al renderizar este componente
         //este dispatch hace que al NavBar le llegue un false del menú desplegable y de los filtros, evitando que se abran
         dispatch(actionDisplayMenuBar(false));
+        dispatch(actionDisplayMobileFilters(false));
         dispatch(actionDisplayFilters(false));
         // y en la siguiente línea, recuperamos los datos del país haciendo una petición al back-end:
         dataCountry();

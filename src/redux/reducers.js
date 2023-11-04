@@ -4,6 +4,7 @@ import { deleteDuplicatesActivities } from '../utils/deleteDuplicates';
 import {
     SET_PAGE,
     SET_DISPLAY_MENU_BAR,
+    SET_DISPLAY_MOBILE_FILTERS,
     SET_DISPLAY_FILTERS,
     INITIAL_COUNTRIES,
     ACTIVITIES_AVAILABLES,
@@ -19,6 +20,7 @@ import {
 const initialState = {
     page: 1,
     displayMenuBar: false,
+    displayFiltersMobile: false,
     displayFilters: false,
     onlyCountriesWActivities: false,
     saveInitialCountries: [], // guarda los países iniciales para volver a mostrarlos una vez que se cierr el filtro mas estricto de todos (Mostrar solo países con actividades).
@@ -40,6 +42,9 @@ const rootReducer = (state = initialState, action) => {
 
         case SET_DISPLAY_MENU_BAR: // para avisarnos si se desplagó la barra menú mobile
             return { ...state, displayMenuBar: action.payload };
+
+        case SET_DISPLAY_MOBILE_FILTERS: // para avisarnos si se desplagó la sección de los filtros en mobile size
+            return { ...state, displayFiltersMobile: action.payload };
 
         case SET_DISPLAY_FILTERS: // para avisarnos si se desplagó la sección de los filtros
             return { ...state, displayFilters: action.payload };

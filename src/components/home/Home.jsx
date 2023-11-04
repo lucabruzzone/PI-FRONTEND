@@ -9,7 +9,8 @@ import {
     actionDisplayFilters,
     actionRenderCountries,
     actionRemoveAllFilters,
-    actionFilterOnlyActivities
+    actionFilterOnlyActivities,
+    actionDisplayMobileFilters
 } from '../../redux/actions';
 
 function Home() {
@@ -41,6 +42,7 @@ function Home() {
         //acá nos aseguramos de que el menú desplegable y los filtros no se abran indeseablemente al renderizar este componente
         //este dispatch hace que al NavBar le llegue un false del menú desplegable y de los filtros, evitando que se abran
         dispatch(actionDisplayMenuBar(false));
+        dispatch(actionDisplayMobileFilters(false));
         dispatch(actionDisplayFilters(false));
         // con la línea de abajo nos aseguramos de que otras barSearch usados en otros componentes no borren países del estado global
         // de lo contrario, en el home u otros componentes, no se mostrarían todos los países
