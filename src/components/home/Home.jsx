@@ -22,7 +22,8 @@ function Home() {
     const continentsFilter = useSelector(state => state.continentsFilter);
     const page = useSelector(state => state.page);
     const [numberOfFiltersSelected, setNumberOfFiltersSelected] = useState(0);
-    const [eachPage, setEachPage] = useState(24);
+    /* const [eachPage, setEachPage] = useState(24); */
+    const eachPage = 24
     let totalPages = Math.ceil(renderCountries.length / eachPage);
     let initialSlice = (page - 1) * eachPage;
     let lastSlice = ((page - 1) * eachPage) + eachPage;
@@ -53,7 +54,7 @@ function Home() {
 
     return (
         <div className={styles.mainView}>
-            <section className={styles.filterSelectionsView}>
+            <section className={styles.filterSelectionsView} id={!initialCountries.length && styles.filterSelectionsViewLoading}>
                 <div className={styles.filterSelectionsContainer}>
                     <p>Filtros aplicados: <span>{numberOfFiltersSelected}</span></p>
                     <button onClick={removeFilters}>Borrar filtros</button>
@@ -64,7 +65,7 @@ function Home() {
                     </div>
                 </div>
             </section>
-            <p id={styles.seleccionaUnPais}>Selecciona un país:</p>
+            <p className={styles.seleccionaUnPais} id={!initialCountries.length && styles.filterSelectionsViewLoading}>Selecciona un país:</p>
             {initialCountries.length ?
                 <section className={styles.cardsView}>
                     {renderCountries.length ?

@@ -44,6 +44,10 @@
     background-color: var(--light-bgcolor);
 }
 
+#filterSelectionsViewLoading{
+    filter: blur(3px);
+}
+
 .filterSelectionsContainer {
     margin: auto;
     max-width: 1000px;
@@ -140,7 +144,7 @@
     color: var(--gray-font-color);
 }
 
-#seleccionaUnPais{
+.seleccionaUnPais{
     width: 100%;
     max-width: 1000px;
     margin: 30px 0 10px 0;
