@@ -7,12 +7,14 @@ import axios from 'axios';
 import { HOME, FORM, URL, COUNTRY } from '../../utils/pathroutes';
 import { useNavigate, useLocation, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { actionDisplayMenuBar, actionDisplayFilters, actionRenderCountries } from '../../redux/actions';
 
 function NavBar() {
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [mobileFiltersDisplay, setMobileFiltersDisplay] = useState(false);
     const globalDisplayMenuBar = useSelector(state => state.displayMenuBar);
     const globalDisplayFilters = useSelector(state => state.displayFilters);
     const initialCountries = useSelector(state => state.initialCountries);
@@ -33,17 +35,16 @@ function NavBar() {
         }
     }
 
-    function handleMediaMenuBar() {
-        // abrimos o cerramos el menu desplegable y despachamos al estado global true si se desplegó y false si no
-        // si el estado global es false, significa que se esconderá el menu desplegable
-        dispatch(actionDisplayMenuBar(!globalDisplayMenuBar));
-        if (globalDisplayMenuBar) { // si el menu mobile está abierto y lo queremos cerrar, acá nos aseguramos de cerrar también el box de filtros.
-            dispatch(actionDisplayFilters(false)); 
-        }
+    function handleMediaFilter() { // abre o cierra los filtros en mobile size
+        setMobileFiltersDisplay(!mobileFiltersDisplay);
     }
 
-    function handlerFilters() {
-        dispatch(actionDisplayFilters(!globalDisplayFilters))
+    function handlerFilters() { // acá abrimos o cerramos al mismo tiempo, el menu en mobile size y los filtros en desktop size 
+        dispatch(actionDisplayFilters(!globalDisplayFilters));
+        dispatch(actionDisplayMenuBar(!globalDisplayMenuBar));
+        if (mobileFiltersDisplay) { // si esque sigue abierto el box de filtros en mobile size, lo cerramos para que no genere problemas
+            setMobileFiltersDisplay(!mobileFiltersDisplay);
+        }
     }
 
     return (
@@ -62,7 +63,7 @@ function NavBar() {
                     }
                 </div>
                 {location.pathname !== '/' &&
-                    <img onClick={handleMediaMenuBar} className={styles.menuIcon} src={menuIcon} alt="menu image" />
+                    <img onClick={handlerFilters} className={styles.menuIcon} src={menuIcon} alt="menu image" />
                 }
                 <div className={styles.listContainer}>
                     <ul>
@@ -106,16 +107,13 @@ function NavBar() {
                             </li>
 
                             <li className={styles.li}>
-                                <NavLink className={styles.navLinkMedia} onClick={handlerFilters}>
+                                <NavLink className={styles.navLinkMedia} onClick={handleMediaFilter}>
                                     <button className={styles.filtros}>Filtros</button>
                                 </NavLink>
                             </li>
-                            {/* <div id={styles.filterMobile} className={globalDisplayFilters ? styles.filterMobileDisplayed : styles.filterMobileHidden}>
-                            <FilterDesktop />
-                        </div> */}
                         </ul>
                     </div>
-                    <div id={styles.filterMobile} className={globalDisplayFilters ? styles.filterMobileDisplayed : styles.filterMobileHidden}>
+                    <div id={styles.filterMobile} className={mobileFiltersDisplay ? styles.filterMobileDisplayed : styles.filterMobileHidden}>
                         <FilterDesktop />
                     </div>
                 </div>

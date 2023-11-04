@@ -9,11 +9,11 @@ function Footer() {
                 <div className={styles.textos}>
                     <h1>MyCountryApp</h1>
                     <p className={styles.comentario}>Proyecto Individual en <a href="https://www.soyhenry.com/" target="_blank" rel="noreferrer">Henry</a></p>
-                    <p className={styles.parrafo}>En este proyecto, se aplican todas las herramientas y conocimiento adquirido en el bootcamp Desarrollo Fullstack en <a href="https://www.soyhenry.com/" target="_blank" rel="noreferrer">Henry</a>. Se diseñó y se desarrolló usando tecnologías como React, Redux, Express, Node js, entre otras.</p>
+                    <p className={styles.parrafo}>Aplicación diseñada y desarrollada con las herramientas y el conocimiento adquirido en el bootcamp Desarrollo Fullstack en <a href="https://www.soyhenry.com/" target="_blank" rel="noreferrer">Henry</a>, usando tecnologías como React, Redux, Express, Node js, entre otras.</p>
                     <ol>
-                        <li>Busca y selecciona cualquier país</li>
+                        <li>Busca y selecciona un país</li>
                         <li>Personaliza tu búsqueda usando los filtros</li>
-                        <li>Revisa las actividades turísticas del país</li>
+                        <li>Revisa las actividades turísticas de cada país</li>
                         <li>Crea y agrega nuevas actividades</li>
                     </ol>
                 </div>

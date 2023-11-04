@@ -42,13 +42,13 @@
 
 .textos ol{
     padding-left: 0;
-    text-align: left;
+    text-align: center;
     width: max-content;
     margin: 40px auto 20px auto;
 }
 
 .textos li{
-    list-style-type: decimal;
+    list-style-type: none;
     margin: 4px 0;
 }
 

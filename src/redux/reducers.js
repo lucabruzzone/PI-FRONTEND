@@ -92,8 +92,8 @@ const rootReducer = (state = initialState, action) => {
                 // para iterar en dos ciclos for las actividades de cada país y hacer un match con los filtros del usuario
                 // si se hace el match, entonces hacemos un push de ese país al array madre "newArray" que lo inicializamos antes de comenzar el SWITCH
                 if (state.activitiesFilter.length) {
-                    let actionPayload = action.payload;
-                    for (const country of actionPayload) {
+                    let initialCountries = action.payload;
+                    for (const country of initialCountries) {
                         let booleanValue = false;
                         let countryActivities = country.activities;
                         for (const activity of countryActivities) {
@@ -107,8 +107,8 @@ const rootReducer = (state = initialState, action) => {
 
                 // luego hace lo mismo pero con los filtros de dificultad de las actividades turísticas
                 if (state.difficultyFilter.length) {
-                    let actionPayload = action.payload;
-                    for (const country of actionPayload) {
+                    let initialCountries = action.payload;
+                    for (const country of initialCountries) {
                         let booleanValue = false;
                         let countryActivities = country.activities;
                         for (const activity of countryActivities) {
@@ -122,8 +122,8 @@ const rootReducer = (state = initialState, action) => {
 
                 // luego exactamente lo mismo pero con los filtros de las temporadas (verano, otoño..etc)
                 if (state.seasonFilter.length) {
-                    let actionPayload = action.payload;
-                    for (const country of actionPayload) {
+                    let initialCountries = action.payload;
+                    for (const country of initialCountries) {
                         let booleanValue = false;
                         let countryActivities = country.activities;
                         for (const activity of countryActivities) {
@@ -137,8 +137,8 @@ const rootReducer = (state = initialState, action) => {
 
                 // y aquí sigue con los filtros de continentes
                 if (state.continentsFilter.length) {
-                    let actionPayload = action.payload;
-                    for (const country of actionPayload) {
+                    let initialCountries = action.payload;
+                    for (const country of initialCountries) {
                         let booleanValue = false;
                         let countryContinents = country.continente.toLowerCase();
                         if (state.continentsFilter.includes(countryContinents)) {
