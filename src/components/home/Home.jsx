@@ -87,9 +87,9 @@ function Home() {
                             <div className={styles.cardComponentBox}></div>
                         </div>
                     }
-                    <section className={styles.paginado2}>
+                    <div className={styles.paginado2}>
                         <Paginado totalPages={totalPages} />
-                    </section>
+                    </div>
                 </section> :
                 <div className={styles.loadingContainer}>
                     <Loading />

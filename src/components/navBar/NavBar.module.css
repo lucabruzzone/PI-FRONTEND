@@ -51,7 +51,6 @@
     width: 100%;
     max-width: var(--container-max-width);
     padding: var(--view-side-padding);
-    background-color: white;
     display: flex;
     align-items: center;
 }
