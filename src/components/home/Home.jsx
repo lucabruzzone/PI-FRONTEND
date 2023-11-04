@@ -57,6 +57,7 @@ function Home() {
                 <div className={styles.filterSelectionsContainer}>
                     <p>Filtros aplicados: <span>{numberOfFiltersSelected}</span></p>
                     <button onClick={removeFilters}>Borrar filtros</button>
+                    <p className={styles.order}>Ordenar por:</p>
                     <div id={styles.activitiesOnly}>
                         <p onClick={onlyCountriesWActivities && filterCountriesWActivities} id={onlyCountriesWActivities ? styles.activitiesOnlyOffP : styles.activitiesOnlyOnP}>Todos los países</p>
                         <p className={styles.activitiesOnlyDown} onClick={!onlyCountriesWActivities && filterCountriesWActivities} id={onlyCountriesWActivities ? styles.activitiesOnlyOnP : styles.activitiesOnlyOffP}>Solo países con actividades</p>

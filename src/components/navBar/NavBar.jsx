@@ -37,6 +37,9 @@ function NavBar() {
         // abrimos o cerramos el menu desplegable y despachamos al estado global true si se desplegó y false si no
         // si el estado global es false, significa que se esconderá el menu desplegable
         dispatch(actionDisplayMenuBar(!globalDisplayMenuBar));
+        if (globalDisplayMenuBar) { // si el menu mobile está abierto y lo queremos cerrar, acá nos aseguramos de cerrar también el box de filtros.
+            dispatch(actionDisplayFilters(false)); 
+        }
     }
 
     function handlerFilters() {
@@ -87,29 +90,34 @@ function NavBar() {
 
             {/* MEDIA QUERY MENU BAR */}
             {location.pathname !== '/' &&
-                <div id={styles.menuBarContainer} className={globalDisplayMenuBar ? styles.menuDisplayed : styles.menuHidden}>
-                    <ul className={styles.firstUl}>
-                        <li className={styles.li} id={location.pathname === HOME ? styles.navLinkMobileLanding : ''}>
-                            <NavLink to={HOME} className={styles.navLinkMedia}>
-                                <button id={HOME} className={styles.home}>Home</button>
-                            </NavLink>
-                        </li>
+                <div id={styles.menuBarContainer}>
+                    <div id={globalDisplayMenuBar ? styles.firstUlOn : styles.firstUlOff}>
+                        <ul className={styles.firstUl}>
+                            <li className={styles.li} id={location.pathname === HOME ? styles.navLinkMobileLanding : ''}>
+                                <NavLink to={HOME} className={styles.navLinkMedia}>
+                                    <button id={HOME} className={styles.home}>Home</button>
+                                </NavLink>
+                            </li>
 
-                        <li className={styles.li} id={location.pathname === FORM && styles.navLinkMobileLanding}>
-                            <NavLink to={FORM} className={styles.navLinkMedia}>
-                                <button id={FORM} className={styles.actividades}>Agrega una actividad</button>
-                            </NavLink>
-                        </li>
+                            <li className={styles.li} id={location.pathname === FORM && styles.navLinkMobileLanding}>
+                                <NavLink to={FORM} className={styles.navLinkMedia}>
+                                    <button id={FORM} className={styles.actividades}>Agrega una actividad</button>
+                                </NavLink>
+                            </li>
 
-                        <li className={styles.li}>
-                            <NavLink className={styles.navLinkMedia} onClick={handlerFilters}>
-                                <button className={styles.filtros}>Filtros</button>
-                            </NavLink>
-                        </li>
-                        <div id={styles.filterMobile} className={globalDisplayFilters ? styles.filterMobileDisplayed : styles.filterMobileHidden}>
+                            <li className={styles.li}>
+                                <NavLink className={styles.navLinkMedia} onClick={handlerFilters}>
+                                    <button className={styles.filtros}>Filtros</button>
+                                </NavLink>
+                            </li>
+                            {/* <div id={styles.filterMobile} className={globalDisplayFilters ? styles.filterMobileDisplayed : styles.filterMobileHidden}>
                             <FilterDesktop />
-                        </div>
-                    </ul>
+                        </div> */}
+                        </ul>
+                    </div>
+                    <div id={styles.filterMobile} className={globalDisplayFilters ? styles.filterMobileDisplayed : styles.filterMobileHidden}>
+                        <FilterDesktop />
+                    </div>
                 </div>
             }
         </div>

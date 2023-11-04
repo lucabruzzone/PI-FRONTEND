@@ -49,7 +49,7 @@
     max-width: 1000px;
     position: relative;
     width: 100%;
-    min-height: 150px;
+    min-height: 160px;
     padding: var(--view-side-padding);
     padding-top: 10px;
     display: flex;
@@ -61,12 +61,14 @@
     border: none;
     font-size: 18px;
     color: var(--main-border-color);
+    font-weight: var(--main-font-weight);
     background-color: transparent;
+    text-decoration: underline;
     cursor: pointer;
 }
 
 .filterSelectionsContainer button:hover{
-    text-decoration: underline;
+    opacity: .7;
 }
 
 .filterSelectionsContainer p{
@@ -81,6 +83,10 @@
 .filterSelectionsContainer span{
     color: var(--main-border-color);
     font-weight: var(--main-font-weight);
+}
+
+.order{
+    align-self: center;
 }
 
 #activitiesOnly{
