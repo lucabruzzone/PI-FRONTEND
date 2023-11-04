@@ -29,12 +29,11 @@ function NavBar() {
             else dispatch(actionRenderCountries(initialCountries));
         } catch (error) {
             dispatch(actionRenderCountries([]));
-            console.log(error.message);
+            console.error(error.message);
         }
     }
 
     function handleMediaMenuBar() {
-        console.log('tukis');
         // abrimos o cerramos el menu desplegable y despachamos al estado global true si se desplegó y false si no
         // si el estado global es false, significa que se esconderá el menu desplegable
         dispatch(actionDisplayMenuBar(!globalDisplayMenuBar));

@@ -63,9 +63,6 @@ function Home() {
                     </div>
                 </div>
             </section>
-            {/* <section className={styles.paginado1}>
-                <Paginado totalPages={totalPages} />
-            </section> */}
             <p id={styles.seleccionaUnPais}>Selecciona un país:</p>
             {renderCountries.length ?
                 <section className={styles.cardsView}>
@@ -88,14 +85,17 @@ function Home() {
                             <div className={styles.cardComponentBox}></div>
                         </div>
                     }
+                    <section className={styles.paginado2}>
+                        <Paginado totalPages={totalPages} />
+                    </section>
                 </section> :
                 <div className={styles.loadingContainer}>
                     <Loading />
                 </div>
             }
-            <section className={styles.paginado2}>
+            {/* <section className={styles.paginado2}>
                 <Paginado totalPages={totalPages} />
-            </section>
+            </section> */}
         </div>
     );
 }
