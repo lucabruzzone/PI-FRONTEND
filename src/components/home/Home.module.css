@@ -190,30 +190,15 @@
     }
 }
 
-/* .paginado1{
+.paginado2{
     width: 70%;
     max-width: 500px;
-    margin: auto;
     height: 45px;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    background-color: var(--off-border-color);
+    margin-bottom: 100px;
+    background-color: var(--light-border-color);
     border: 1px solid var(--off-border-color);
     border-radius: 50px;
     overflow: hidden;
-} */
-
-.paginado2{
-    background-color: blue;
-    width: 70%;
-    max-width: 500px;
-    /* margin: auto; */
-    height: 45px;
-    margin-bottom: 100px;
-    /* background-color: var(--off-border-color); */
-    border: 1px solid var(--off-border-color);
-    border-radius: 50px;
-    /* overflow: hidden; */
 }
 
 

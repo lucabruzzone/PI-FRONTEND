@@ -95,9 +95,6 @@ function Home() {
                     <Loading />
                 </div>
             }
-            {/* <section className={styles.paginado2}>
-                <Paginado totalPages={totalPages} />
-            </section> */}
         </div>
     );
 }
