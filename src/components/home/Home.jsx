@@ -64,7 +64,7 @@ function Home() {
                 </div>
             </section>
             <p id={styles.seleccionaUnPais}>Selecciona un país:</p>
-            {renderCountries.length ?
+            {initialCountries.length ?
                 <section className={styles.cardsView}>
                     {renderCountries.length ?
                         <div className={styles.cardsContainer}>
@@ -77,6 +77,8 @@ function Home() {
                             })}
                         </div> :
                         <div className={styles.cardsContainer}>
+                            <div className={styles.cardComponentBox}></div>
+                            <div className={styles.cardComponentBox}></div>
                             <div className={styles.cardComponentBox}></div>
                             <div className={styles.cardComponentBox}></div>
                             <div className={styles.cardComponentBox}></div>

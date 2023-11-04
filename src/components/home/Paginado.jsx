@@ -7,7 +7,7 @@ import { actionSetPage } from '../../redux/actions';
 
 function Paginado({ totalPages }) {
     Paginado.propTypes = {
-        totalPages: PropTypes.number.isRequired,// Ejemplo de otra prop con validación
+        totalPages: PropTypes.number.isRequired,
     };
     const dispatch = useDispatch()
     const page = useSelector(state => state.page);
