@@ -23,7 +23,6 @@ function Detail() {
                 capital = capital.replace(/[{}]/g, ''); // limpiamos el string ya que puede venir con símbolos que no queremos
                 obj = { ...country, capital, activities };
                 setCountry(obj);
-                console.log({ ...country, capital, activities });
             }
             else throw Error('Error al cargar los datos del país');
         } catch (error) {
@@ -55,8 +54,8 @@ function Detail() {
                                 <p>Continente: {country.continente}</p>
                                 <p>Sub region: {country.subRegion}</p>
                                 <p>Capital: {country.capital}</p>
-                                <p>Área: {country.area}</p>
-                                <p>población: {country.poblacion.toLocaleString()}</p>
+                                <p>Área: {country.area.toLocaleString()} km2</p>
+                                <p>población: {country.poblacion.toLocaleString()} habitantes</p>
                             </div>
                         </div>
                         <img className={styles.imagenBandera} src={country.imagenBandera} alt="" />
@@ -70,7 +69,7 @@ function Detail() {
                                     <p className={styles.actividadParam}>Actividad</p>
                                     <p className={styles.allParams}>Dificultad</p>
                                     <p className={styles.allParams}>duracion</p>
-                                    <p className={styles.allParams}>temporada</p>
+                                    <p className={styles.allParams} id={styles.temporadaValue}>temporada</p>
                                 </div>
                                 <div className={styles.valuesRowsTable}>
                                     {country.activities?.map((activity, i) => {
