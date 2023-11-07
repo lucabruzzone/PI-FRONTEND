@@ -70,6 +70,9 @@ function Home() {
             <p className={styles.seleccionaUnPais} id={!initialCountries.length && styles.filterSelectionsViewLoading}>Selecciona un país:</p>
             {initialCountries.length ?
                 <section className={styles.cardsView}>
+                    <div className={styles.paginado1}>
+                        <Paginado totalPages={totalPages} />
+                    </div>
                     {renderCountries.length ?
                         <div className={styles.cardsContainer}>
                             {renderCountries.length && renderCountries.slice(initialSlice, lastSlice).map((country, index) => {

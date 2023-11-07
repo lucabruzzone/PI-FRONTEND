@@ -118,6 +118,7 @@
     height: 30px;
     text-align: left;
     padding-left: 15px;
+    color: black;
 }
 
 .activitiesTableContainer{
@@ -146,7 +147,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding-left: 15px;
+    padding-left: 10px;
     font-size: var(--main-font-size);
     font-weight: var(--main-font-weight);
     color: var(--gray-font-color);
@@ -158,7 +159,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 15px;
+    padding-left: 5px;
     font-size: var(--main-font-size);
     color: var(--gray-font-color);
     overflow: hidden;
@@ -199,9 +200,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding-left: 15px;
+    padding-left: 10px;
     font-size: var(--main-font-size);
     font-weight: var(--main-font-weight);
+    color: black;
     overflow: hidden;
 }
 
@@ -215,9 +217,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 15px;
+    padding-left: 5px;
     font-size: var(--main-font-size);
     font-weight: var(--main-font-weight);
+    color: black;
     overflow: hidden;
 }
 

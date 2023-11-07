@@ -68,8 +68,8 @@ function Detail() {
                                 <div className={styles.params}>
                                     <p className={styles.actividadParam}>Actividad</p>
                                     <p className={styles.allParams}>Dificultad</p>
-                                    <p className={styles.allParams}>duracion</p>
-                                    <p className={styles.allParams} id={styles.temporadaValue}>temporada</p>
+                                    <p className={styles.allParams}>Duracion</p>
+                                    <p className={styles.allParams} id={styles.temporadaValue}>Temporada</p>
                                 </div>
                                 <div className={styles.valuesRowsTable}>
                                     {country.activities?.map((activity, i) => {

@@ -119,14 +119,15 @@
     padding: 0 20px;
     font-size: var(--main-font-size);
     font-weight: var(--main-font-weight);
+    color: black;
     outline: none;
 }
 
 .searchBar input::placeholder{
-    font-weight: 500;
+    font-weight: 200;
     font-size: 18px;
     color: var(--gray-font-color);
-    opacity: .9;
+    opacity: .7;
 }
 
 .menuIcon {

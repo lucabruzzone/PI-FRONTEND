@@ -125,7 +125,7 @@ function Form() {
     return (
         <form onSubmit={handleSubmit} className={styles.mainView}>
             <div className={styles.mainContainer}>
-                <p>Nueva actividad</p>
+                <p className={styles.nuevaActividad}>Nueva actividad</p>
                 <NavLink to={HOME}>
                     <button className={styles.closeButton}>
                         Cerrar x

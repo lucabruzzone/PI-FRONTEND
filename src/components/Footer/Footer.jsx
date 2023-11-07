@@ -10,11 +10,12 @@ function Footer() {
                     <h1>MyCountryApp</h1>
                     <p className={styles.comentario}>Proyecto Individual en <a href="https://www.soyhenry.com/" target="_blank" rel="noreferrer">Henry</a></p>
                     <p className={styles.parrafo}>Aplicación diseñada y desarrollada con las herramientas y el conocimiento adquirido en el bootcamp Desarrollo Fullstack en <a href="https://www.soyhenry.com/" target="_blank" rel="noreferrer">Henry</a>, usando tecnologías como React, Redux, Express, Node js, entre otras.</p>
+                    <p className={styles.dospuntos}>En esta aplicacición podrás:</p>
                     <ol>
-                        <li>Busca y selecciona un país</li>
-                        <li>Personaliza tu búsqueda usando los filtros</li>
-                        <li>Revisa las actividades turísticas de cada país</li>
-                        <li>Crea y agrega nuevas actividades</li>
+                        <li>Buscar y seleccionar un país</li>
+                        <li>Personalizar tu búsqueda usando los filtros</li>
+                        <li>Revisar las actividades turísticas de cada país</li>
+                        <li>Crear y agregar nuevas actividades</li>
                     </ol>
                 </div>
                 <div className={styles.contacto}>

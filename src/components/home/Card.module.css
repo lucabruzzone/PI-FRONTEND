@@ -108,7 +108,7 @@
     font-size: 14px;
     font-weight: var(--main-font-weight);
     line-height: 20px;
-    /* color: var(--gray-font-color); */
+    color: black;
 }
 
 .zoomIcon {

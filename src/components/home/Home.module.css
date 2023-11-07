@@ -194,11 +194,24 @@
     }
 }
 
+.paginado1{
+    width: 70%;
+    max-width: 500px;
+    height: 45px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: var(--light-border-color);
+    border: 1px solid var(--off-border-color);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
 .paginado2{
     width: 70%;
     max-width: 500px;
     height: 45px;
-    margin-bottom: 100px;
+    margin-top: 20px;
+    margin-bottom: 70px;
     background-color: var(--light-border-color);
     border: 1px solid var(--off-border-color);
     border-radius: 50px;
