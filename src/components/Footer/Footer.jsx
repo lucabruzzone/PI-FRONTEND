@@ -10,7 +10,8 @@ function Footer() {
                     <h1>MyCountryApp</h1>
                     <p className={styles.comentario}>Proyecto Individual en <a href="https://www.soyhenry.com/" target="_blank" rel="noreferrer">Henry</a></p>
                     <p className={styles.parrafo}>Aplicación diseñada y desarrollada con las herramientas y el conocimiento adquirido en el bootcamp Desarrollo Fullstack en <a href="https://www.soyhenry.com/" target="_blank" rel="noreferrer">Henry</a>, usando tecnologías como React, Redux, Express, Node js, entre otras.</p>
-                    <p className={styles.dospuntos}>En esta aplicacición podrás:</p>
+                    <hr />
+                    <p className={styles.dospuntos}>En esta aplicación podrás:</p>
                     <ol>
                         <li>Buscar y seleccionar un país</li>
                         <li>Personalizar tu búsqueda usando los filtros</li>

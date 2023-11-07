@@ -37,14 +37,24 @@
     line-height: 22px;
     font-weight: 500;
     color: black;
+    margin-bottom: 30px;
 }
 
 .parrafo a{
     color: rgb(186, 171, 0);
 }
 
+hr{
+    width: 90%;
+    margin: auto;
+    border: 1px solid rgba(0, 0, 0, 0.203);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
 .dospuntos{
-    margin-top: 20px;
+    margin-top: 10px;
     font-weight: var(--main-font-weight);
     color: black;
 }
