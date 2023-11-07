@@ -107,10 +107,6 @@
     width: 100%;
 }
 
-.inputBox input {
-    color: black;
-}
-
 .paisNombreInput input {
     height: 50px;
     width: 100%;
@@ -121,6 +117,7 @@
     font-size: 18px;
     font-weight: var(--main-font-weight);
     color: black;
+    background-color: white;
 }
 
 .paisNombreInput input::placeholder{
@@ -282,6 +279,7 @@
     min-width: 180px;
     border: 1px solid var(--main-border-color);
     border-radius: 50px;
+    color: black;
     overflow: hidden;
 }
 
@@ -292,7 +290,6 @@
     font-size: 18px;
     font-weight: var(--main-font-weight);
     border-right: 1px solid rgba(128, 128, 128, 0.364);
-    color: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -327,6 +324,7 @@
     border-radius: 5px;
     font-size: 18px;
     color: black;
+    background-color: white;
     font-weight: var(--main-font-weight);
     padding: 3px;
     outline: none;
@@ -360,6 +358,7 @@
     width: 100%;
     border: 1px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
+    color: black;
     overflow: hidden;
     text-align: left;
 }
@@ -370,7 +369,6 @@
     padding: 2px 10px;
     font-size: 18px;
     font-weight: var(--main-font-weight);
-    color: black;
     border-bottom: 1px solid rgba(128, 128, 128, 0.364);
     cursor: pointer;
 }
