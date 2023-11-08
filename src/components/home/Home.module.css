@@ -39,7 +39,7 @@
 .filterSelectionsView{
     width: 100%;
     /* max-width: 1000px; */
-    margin-top: 20px;
+    /* margin-top: 20px; */
     padding: var(--view-side-padding);
     background-color: var(--light-bgcolor);
 }
