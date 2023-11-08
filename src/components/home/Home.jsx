@@ -10,11 +10,13 @@ import {
     actionRenderCountries,
     actionRemoveAllFilters,
     actionFilterOnlyActivities,
-    actionDisplayMobileFilters
+    actionDisplayMobileFilters,
+    actionAlphabeticalSort
 } from '../../redux/actions';
 
 function Home() {
     const onlyCountriesWActivities = useSelector(state => state.onlyCountriesWActivities);
+    const alphabeticalSortGlobal = useSelector(state => state.alphabeticalRender);
     const initialCountries = useSelector(state => state.initialCountries);
     const renderCountries = useSelector(state => state.renderCountries);
     const activitiesFilter = useSelector(state => state.activitiesFilter);
@@ -23,7 +25,6 @@ function Home() {
     const continentsFilter = useSelector(state => state.continentsFilter);
     const page = useSelector(state => state.page);
     const [numberOfFiltersSelected, setNumberOfFiltersSelected] = useState(0);
-    /* const [eachPage, setEachPage] = useState(24); */
     const eachPage = 24
     let totalPages = Math.ceil(renderCountries.length / eachPage);
     let initialSlice = (page - 1) * eachPage;
@@ -36,6 +37,10 @@ function Home() {
 
     function filterCountriesWActivities() {
         dispatch(actionFilterOnlyActivities(initialCountries));
+    }
+
+    function alphabeticalSort() {
+        dispatch(actionAlphabeticalSort());
     }
 
     useEffect(() => {
@@ -60,10 +65,11 @@ function Home() {
                 <div className={styles.filterSelectionsContainer}>
                     <p>Filtros aplicados: <span>{numberOfFiltersSelected}</span></p>
                     <button onClick={removeFilters}>Borrar filtros</button>
-                    <p className={styles.order}>Ordenar por:</p>
+                    <p className={styles.order}>Mostrar:</p>
                     <div id={styles.activitiesOnly}>
                         <p onClick={onlyCountriesWActivities && filterCountriesWActivities} id={onlyCountriesWActivities ? styles.activitiesOnlyOffP : styles.activitiesOnlyOnP}>Todos los países</p>
                         <p className={styles.activitiesOnlyDown} onClick={!onlyCountriesWActivities && filterCountriesWActivities} id={onlyCountriesWActivities ? styles.activitiesOnlyOnP : styles.activitiesOnlyOffP}>Solo países con actividades</p>
+                        <p onClick={alphabeticalSort} id={alphabeticalSortGlobal ? styles.alfabetoOn : styles.alfabetoOff}>Alfabético</p>
                     </div>
                 </div>
             </section>

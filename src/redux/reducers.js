@@ -1,7 +1,6 @@
-import { deleteDuplicates } from '../utils/deleteDuplicates';
 import activitiesOnly from '../utils/activitiesOnly';
 import { deleteDuplicatesActivities } from '../utils/deleteDuplicates';
-import returnDuplicates from '../utils/returnDuplicates';
+import alphabeticalSortFunction from '../utils/alphabeticalSortFunction';
 import {
     SET_PAGE,
     SET_DISPLAY_MENU_BAR,
@@ -15,7 +14,8 @@ import {
     FILTER_SEASON,
     FILTER_CONTINENTS,
     REMOVE_ALL_FILTERS,
-    FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES
+    FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES,
+    FILTER_ALPHABETICAL_SORT
 } from '../utils/actionTypes';
 
 const initialState = {
@@ -24,7 +24,9 @@ const initialState = {
     displayFiltersMobile: false,
     displayFilters: false,
     onlyCountriesWActivities: false,
-    saveInitialCountries: [], // guarda los países iniciales para volver a mostrarlos una vez que se cierr el filtro mas estricto de todos (Mostrar solo países con actividades).
+    alphabeticalRender: false,
+    saveInitialCountries: [], // reserva los países iniciales para volver a mostrarlos una vez que se cierre el filtro mas estricto de todos (Mostrar solo países con actividades).
+    saveRenderCountries: [], // reserva algún cambio anterior de renCountries para volver a mostrarlo en algún momento
     renderCountries: [],
     initialCountries: [],
     activitiesAvailable: [],
@@ -234,6 +236,13 @@ const rootReducer = (state = initialState, action) => {
             }
             // volvemos a mostrar todos los países de la BDD y limpiamos también todos los filtros
             return { ...state, page: 1, initialCountries: state.saveInitialCountries, renderCountries: state.saveInitialCountries, onlyCountriesWActivities: false, activitiesFilter: [], difficultyFilter: [], seasonFilter: [], continentsFilter: [] };
+
+        case FILTER_ALPHABETICAL_SORT:
+            if (!state.alphabeticalRender) {
+                const buckUp = state.renderCountries;
+                return { ...state, alphabeticalRender: !state.alphabeticalRender, saveRenderCountries: buckUp, renderCountries: alphabeticalSortFunction(state.renderCountries) };
+            }
+            return { ...state, alphabeticalRender: !state.alphabeticalRender, renderCountries: state.saveRenderCountries };
 
         default:
             return { ...state };

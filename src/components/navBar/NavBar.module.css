@@ -42,7 +42,7 @@
             #f1f3f5), url('../../img/countries.png');
     background-position: top;
     background-size: cover;
-    border-bottom: 1px solid var(--off-border-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.095);
     /* box-shadow: var(--little-box-shadow); */
 }
 

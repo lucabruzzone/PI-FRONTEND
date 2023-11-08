@@ -11,7 +11,8 @@ import {
     FILTER_SEASON,
     FILTER_CONTINENTS,
     REMOVE_ALL_FILTERS,
-    FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES
+    FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES,
+    FILTER_ALPHABETICAL_SORT
 } from '../utils/actionTypes';
 
 export const actionSetPage = (value) => { // action para setear true o false si está abierto o cerrado el menu mobile
@@ -29,6 +30,12 @@ export const actionDisplayMobileFilters = (value) => { // action para setear tru
 export const actionDisplayFilters = (value) => { // action para setear true o false si está abierta o cerrada la sección de filtros
     return { type: SET_DISPLAY_FILTERS, payload: value }
 }
+
+
+
+
+
+
 
 export const actionInitialCountries = (array) => { // action para inicializar el estado global de todos los países al iniciar la app
     return { type: INITIAL_COUNTRIES, payload: array }
@@ -68,4 +75,8 @@ export const actionRemoveAllFilters = (array) => { // action para remover todos 
 
 export const actionFilterOnlyActivities = (array) => { // agrega
     return { type: FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES, payload: array }
+}
+
+export const actionAlphabeticalSort = (array) => { // agrega
+    return { type: FILTER_ALPHABETICAL_SORT, payload: array }
 }
