@@ -1,6 +1,7 @@
 import { deleteDuplicates } from '../utils/deleteDuplicates';
 import activitiesOnly from '../utils/activitiesOnly';
 import { deleteDuplicatesActivities } from '../utils/deleteDuplicates';
+import returnDuplicates from '../utils/returnDuplicates';
 import {
     SET_PAGE,
     SET_DISPLAY_MENU_BAR,
@@ -34,7 +35,8 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
-    let newArray = [];
+    /* let newArray = []; */
+    let dinamicArray = action.payload;
 
     switch (action.type) {
         case SET_PAGE: // seteamos la página actual del paginado
@@ -97,7 +99,15 @@ const rootReducer = (state = initialState, action) => {
                 // para iterar en dos ciclos for las actividades de cada país y hacer un match con los filtros del usuario
                 // si se hace el match, entonces hacemos un push de ese país al array madre "newArray" que lo inicializamos antes de comenzar el SWITCH
                 if (state.activitiesFilter.length) {
-                    let initialCountries = action.payload;
+                    /* if (newArray.length) {
+                        let initialCountries = dinamicArray;
+                    }
+                    else if (!newArray.length) {
+                        initialCountries = action.payload;
+                    }
+                    count++; */
+                    let newArray = [];
+                    let initialCountries = dinamicArray;
                     for (const country of initialCountries) {
                         let booleanValue = false;
                         let countryActivities = country.activities;
@@ -106,13 +116,24 @@ const rootReducer = (state = initialState, action) => {
                                 booleanValue = true;
                             }
                         }
-                        if (booleanValue) newArray.push(country);
+                        if (booleanValue) {
+                            newArray.push(country);
+                        }
                     }
+                    dinamicArray = newArray;
                 }
 
                 // luego hace lo mismo pero con los filtros de dificultad de las actividades turísticas
                 if (state.difficultyFilter.length) {
-                    let initialCountries = action.payload;
+                    /* if (newArray.length) {
+                        initialCountries = newArray;
+                    }
+                    else if (!newArray.length) {
+                        initialCountries = action.payload;
+                    }
+                    count++; */
+                    let newArray = [];
+                    let initialCountries = dinamicArray;
                     for (const country of initialCountries) {
                         let booleanValue = false;
                         let countryActivities = country.activities;
@@ -121,13 +142,24 @@ const rootReducer = (state = initialState, action) => {
                                 booleanValue = true;
                             }
                         }
-                        if (booleanValue) newArray.push(country);
+                        if (booleanValue) {
+                            newArray.push(country);
+                        }
                     }
+                    dinamicArray = newArray;
                 }
 
                 // luego exactamente lo mismo pero con los filtros de las temporadas (verano, otoño..etc)
                 if (state.seasonFilter.length) {
-                    let initialCountries = action.payload;
+                    /* if (newArray.length) {
+                        initialCountries = newArray;
+                    }
+                    else if (!newArray.length) {
+                        initialCountries = action.payload;
+                    }
+                    count++; */
+                    let newArray = [];
+                    let initialCountries = dinamicArray;
                     for (const country of initialCountries) {
                         let booleanValue = false;
                         let countryActivities = country.activities;
@@ -136,21 +168,35 @@ const rootReducer = (state = initialState, action) => {
                                 booleanValue = true;
                             }
                         }
-                        if (booleanValue) newArray.push(country);
+                        if (booleanValue) {
+                            newArray.push(country);
+                        }
                     }
+                    dinamicArray = newArray;
                 }
 
                 // y aquí sigue con los filtros de continentes
                 if (state.continentsFilter.length) {
-                    let initialCountries = action.payload;
+                    /* if (newArray.length) {
+                        initialCountries = newArray;
+                    }
+                    else if (!newArray.length) {
+                        initialCountries = action.payload;
+                    }
+                    count++; */
+                    let newArray = [];
+                    let initialCountries = dinamicArray;
                     for (const country of initialCountries) {
                         let booleanValue = false;
                         let countryContinents = country.continente.toLowerCase();
                         if (state.continentsFilter.includes(countryContinents)) {
                             booleanValue = true;
                         }
-                        if (booleanValue) newArray.push(country);
+                        if (booleanValue) {
+                            newArray.push(country);
+                        }
                     }
+                    dinamicArray = newArray;
                 }
 
                 // Finalmente preguntamos si el array madre se llenó con países filtrados o no.
@@ -159,13 +205,25 @@ const rootReducer = (state = initialState, action) => {
                 // para eso, llamamos a la función "deleteDuplicates" que hace ese trabajo y finalmente retornamos el renderizado con los cambios.
                 // De lo contrario, si el array madre está vacío, quiere decir que no hay ningún país que coincida con el o los filtros seleccionados por el usuario.
                 // por lo tanto simplemente retornamos el estado con el array vacío para que muestre la bandeja vacía sin países.
-                if (newArray.length) {
+                /* if (newArray.length) {
+                    if (count > 1) {
+                        const paisesFiltrados = returnDuplicates(newArray, 'nombre');
+                        return { ...state, page: 1, renderCountries: paisesFiltrados };
+                    }
+                    return { ...state, page: 1, renderCountries: newArray };
                     const arraySinDuplicados = deleteDuplicates(newArray);
                     return { ...state, page: 1, renderCountries: arraySinDuplicados };
                 }
-                return { ...state, page: 1, renderCountries: newArray };
+                return { ...state, page: 1, renderCountries: newArray }; */
             }
-            return { ...state, page: 1, renderCountries: action.payload };
+            /* return { ...state, page: 1, renderCountries: action.payload }; */
+            return { ...state, page: 1, renderCountries: dinamicArray };
+
+
+
+
+
+            
 
         case REMOVE_ALL_FILTERS: // remueve todos los filtros seleccionados
             return { ...state, page: 1, activitiesFilter: [], difficultyFilter: [], seasonFilter: [], continentsFilter: [], renderCountries: state.initialCountries };
