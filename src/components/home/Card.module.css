@@ -46,32 +46,6 @@
     transition: all .2s;
 }
 
-.numberDown{
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
-    width: auto;
-    height: 18px;
-    padding: 0 4px;
-    display: flex;
-    align-items: center;
-    border-radius: var(--main-border-radius);
-    background-color: white;
-    font-size: 14px;
-    font-weight: var(--main-font-weight);
-    color: var(--main-border-color);
-}
-
-#numberDownHidden{
-    display: none;
-}
-
-.numberDown img{
-    height: 20px;
-    width: 10px;
-    margin-left: 5px;
-}
-
 .imgContainer:hover {
     /* box-shadow: var(--high-box-shadow); */
     box-shadow: none;
@@ -100,10 +74,6 @@
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.overlayHidden{
-    opacity: 0;
-}
-
 .countryName {
     font-size: 14px;
     font-weight: var(--main-font-weight);
@@ -112,6 +82,7 @@
 }
 
 .zoomIcon {
+    display: none;
     position: absolute;
     height: 70px;
     width: 80%;
@@ -119,6 +90,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+}
+
+#zoomIconHidden{
+    display: inline;
 }
 
 .zoomIcon img{
@@ -138,6 +113,12 @@
     color: var(--light-font-color);
 }
 
+@media only screen and (max-width: 500px) {
+    .zoomIcon p {
+        font-size: 13px;
+    }
+}
+
 .addIcon{
     position: absolute;
     width: 20px;
@@ -151,4 +132,145 @@
 
 .addIcon:hover{
     background-color: rgb(193, 193, 193);
+}
+
+
+
+
+
+
+
+/* NUMBER LEFT DOWN */
+
+.numberDown{
+    position: absolute;
+    bottom: 5px;
+    left: 16px;
+    width: auto;
+    height: 17px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    border-radius: var(--main-border-radius);
+    background-color: white;
+    font-size: 13px;
+    font-weight: var(--main-font-weight);
+    color: var(--main-border-color);
+}
+
+#numberDownHidden{
+    display: none;
+}
+
+.numberDown img{
+    height: 20px;
+    width: 10px;
+    margin-right: 5px;
+}
+
+@media only screen and (max-width: 500px) {
+    .numberDown {
+        font-size: 10px;
+        height: 14px;
+    }
+
+    .numberDown img {
+        height: 15px;
+        width: 8px;
+        margin-right: 5px;
+    }
+}
+
+
+
+
+
+
+
+/* NUMBER POPULATION */
+
+.numberPopulation{
+    position: absolute;
+    bottom: 5px;
+    right: 16px;
+    width: auto;
+    height: 17px;
+    padding: 0 4px;
+    display: none;
+    border-radius: var(--main-border-radius);
+    background-color: white;
+    font-size: 13px;
+    font-weight: var(--main-font-weight);
+    color: var(--main-border-color);
+}
+
+#numberPopulationHidden{
+    display: flex;
+    align-items: center;
+}
+
+.numberPopulation img{
+    height: 20px;
+    width: 10px;
+    margin-right: 5px;
+}
+
+@media only screen and (max-width: 500px) {
+    .numberPopulation {
+        font-size: 10px;
+        height: 14px;
+    }
+
+    .numberPopulation img {
+        height: 15px;
+        width: 8px;
+        margin-right: 5px;
+    }
+}
+
+
+
+
+
+
+
+/* NUMBER AREA */
+
+.numberArea{
+    position: absolute;
+    top: 5px;
+    right: 16px;
+    width: auto;
+    height: 17px;
+    padding: 0 4px;
+    display: none;
+    border-radius: var(--main-border-radius);
+    background-color: white;
+    font-size: 13px;
+    font-weight: var(--main-font-weight);
+    color: var(--main-border-color);
+}
+
+#numberAreaHidden{
+    display: flex;
+    align-items: center;
+}
+
+.numberArea img{
+    height: 20px;
+    width: 10px;
+    margin-right: 5px;
+}
+
+@media only screen and (max-width: 500px) {
+    .numberArea {
+        font-size: 10px;
+        height: 14px;
+    }
+
+    .numberArea img {
+        height: 15px;
+        width: 8px;
+        margin-right: 5px;
+    }
 }

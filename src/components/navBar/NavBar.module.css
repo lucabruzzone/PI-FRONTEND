@@ -235,6 +235,7 @@
     align-items: center;
     color: red;
     font-size: 12px;
+    font-weight: var(--main-font-weight);
 }
 
 .countOff{

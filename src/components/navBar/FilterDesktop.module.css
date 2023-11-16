@@ -34,7 +34,7 @@
 #eachSection {
     height: 180px;
     border-radius: var(--main-border-radius);
-    flex: 1 0 auto;
+    flex: 1 0 100px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -55,11 +55,13 @@
     flex: 0;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding: 5px 10px;
-    gap: 30px;
+    justify-content: space-between;
+    padding: 5px 20px;
+    margin-bottom: 5px;
+    gap: 10px;
     font-size: 18px;
     color: black;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.129);
 }
 
 .borderSelected{
@@ -77,24 +79,24 @@
     /* border: 2px solid var(--hover-border-color); */
 }
 
-.actividad::before{
+.actividad::after{
     content: url(../../img/mountain-city-solid.svg);
-    width: var(--main-font-size);
+    min-width: var(--main-font-size);
     opacity: var(--off-opacity);
 }
-.dificultad::before{
+.dificultad::after{
     content: url(../../img/star-solid.svg);
-    width: var(--main-font-size);
+    min-width: var(--main-font-size);
     opacity: var(--off-opacity);
 }
-.temporada::before{
+.temporada::after{
     content: url(../../img/cloud-sun-rain-solid.svg);
-    width: var(--main-font-size);
+    min-width: var(--main-font-size);
     opacity: var(--off-opacity);
 }
-.continente::before{
+.continente::after{
     content: url(../../img/earth-americas-solid.svg);
-    width: var(--main-font-size);
+    min-width: var(--main-font-size);
     opacity: var(--off-opacity);
 }
 

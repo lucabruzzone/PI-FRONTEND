@@ -90,21 +90,21 @@ const rootReducer = (state = initialState, action) => {
 
         case FILTER_ALPHABETICAL_SORT:
             if (state.alphabeticalRender === action.payload) {
-                return {...state, alphabeticalRender: ''}
+                return { ...state, alphabeticalRender: '' }
             }
-            return {...state, alphabeticalRender: action.payload, areaRender: '', populationRender: ''}
+            return { ...state, alphabeticalRender: action.payload, areaRender: '', populationRender: '' }
 
         case FILTER_AREA_SORT:
             if (state.areaRender === action.payload) {
-                return {...state, areaRender: ''}
+                return { ...state, areaRender: '' }
             }
-            return {...state, areaRender: action.payload, alphabeticalRender: '', populationRender: ''}
+            return { ...state, areaRender: action.payload, alphabeticalRender: '', populationRender: '' }
 
         case FILTER_POPULATION_SORT:
             if (state.populationRender === action.payload) {
-                return {...state, populationRender: ''}
+                return { ...state, populationRender: '' }
             }
-            return {...state, populationRender: action.payload, alphabeticalRender: '', areaRender: ''}
+            return { ...state, populationRender: action.payload, alphabeticalRender: '', areaRender: '' }
 
 
 
@@ -118,6 +118,10 @@ const rootReducer = (state = initialState, action) => {
         case RENDER_COUNTRIES:
             // primero preguntamos si hay filtros seleccionados. En caso de que no hayan, saltamos al final de este CASE ya que el usuario no está utilizando los filtros.
             // si esque hay filtros seleccionados, comentamos a iterar cada lista de filtros.
+            if (action.payload[1] === 'searchBar') {
+                return { ...state, page: 1, renderCountries: action.payload[0] };
+            }
+
             if (state.onlyCountriesWActivities) {
                 dinamicArray = activitiesOnly(action.payload);
             }
@@ -219,13 +223,13 @@ const rootReducer = (state = initialState, action) => {
 
 
 
-            
+
 
         case REMOVE_ALL_FILTERS: // remueve todos los filtros seleccionados
             return { ...state, page: 1, activitiesFilter: [], difficultyFilter: [], seasonFilter: [], continentsFilter: [] };
 
         case FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES: // renderiza solo los países que cuentan con actividades turísticas
-        return {...state, onlyCountriesWActivities: !state.onlyCountriesWActivities}
+            return { ...state, onlyCountriesWActivities: !state.onlyCountriesWActivities }
 
         default:
             return { ...state };

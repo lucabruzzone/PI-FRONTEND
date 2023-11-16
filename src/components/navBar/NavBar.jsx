@@ -30,7 +30,7 @@ function NavBar() {
             if (value !== '') {
                 const { data } = await axios(`${URL}/${COUNTRY}?name=${value}`);
                 if (data) {
-                    dispatch(actionRenderCountries(data));
+                    dispatch(actionRenderCountries([data, 'searchBar']));
                 }
             }
             else dispatch(actionRenderCountries(initialCountries));

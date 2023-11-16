@@ -127,7 +127,7 @@ function Home() {
                     </div>
                     {renderCountries.length ?
                         <div className={styles.cardsContainer}>
-                            {renderCountries.length && renderCountries.slice(initialSlice, lastSlice).map((country, index) => {
+                            {renderCountries?.length && renderCountries?.slice(initialSlice, lastSlice).map((country, index) => {
                                 return (
                                     <div key={index} className={styles.cardComponentBox}>
                                         <Card country={country} />
