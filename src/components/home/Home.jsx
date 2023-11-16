@@ -9,12 +9,16 @@ import {
     actionDisplayFilters,
     actionRenderCountries,
     actionRemoveAllFilters,
-    actionFilterOnlyActivities,
     actionDisplayMobileFilters,
-    actionAlphabeticalSort
+    actionFilterOnlyActivities,
+    actionAlphabeticalSort,
+    actionAreaSort,
+    actionPopulationSort
 } from '../../redux/actions';
 
 function Home() {
+    const areaRender = useSelector(state => state.areaRender);
+    const populationRender = useSelector(state => state.populationRender);
     const onlyCountriesWActivities = useSelector(state => state.onlyCountriesWActivities);
     const alphabeticalSortGlobal = useSelector(state => state.alphabeticalRender);
     const initialCountries = useSelector(state => state.initialCountries);
@@ -33,14 +37,31 @@ function Home() {
 
     function removeFilters() {
         dispatch(actionRemoveAllFilters());
+        dispatch(actionRenderCountries(initialCountries));
     }
 
     function filterCountriesWActivities() {
         dispatch(actionFilterOnlyActivities(initialCountries));
+        dispatch(actionRenderCountries(initialCountries));
+        /* dispatch(actionRenderCountries(initialCountries)); */
     }
 
-    function alphabeticalSort() {
-        dispatch(actionAlphabeticalSort());
+    function alphabeticalSort(letter) {
+        dispatch(actionAlphabeticalSort(letter));
+        dispatch(actionRenderCountries(initialCountries));
+        // dispatch(actionAlphabeticalSort(letter));
+    }
+
+    function areaSort(letter) {
+        dispatch(actionAreaSort(letter));
+        dispatch(actionRenderCountries(initialCountries));
+        // dispatch(actionAlphabeticalSort(letter));
+    }
+
+    function populationSort(letter) {
+        dispatch(actionPopulationSort(letter));
+        dispatch(actionRenderCountries(initialCountries));
+        // dispatch(actionAlphabeticalSort(letter));
     }
 
     useEffect(() => {
@@ -63,16 +84,41 @@ function Home() {
         <div className={styles.mainView}>
             <section className={styles.filterSelectionsView} id={!initialCountries.length && styles.filterSelectionsViewLoading}>
                 <div className={styles.filterSelectionsContainer}>
-                    <p>Filtros aplicados: <span>{numberOfFiltersSelected}</span></p>
-                    <button onClick={removeFilters}>Borrar filtros</button>
-                    <p className={styles.order}>Mostrar:</p>
-                    <div id={styles.activitiesOnly}>
-                        <p onClick={onlyCountriesWActivities && filterCountriesWActivities} id={onlyCountriesWActivities ? styles.activitiesOnlyOffP : styles.activitiesOnlyOnP}>Todos los países</p>
-                        <p className={styles.activitiesOnlyDown} onClick={!onlyCountriesWActivities && filterCountriesWActivities} id={onlyCountriesWActivities ? styles.activitiesOnlyOnP : styles.activitiesOnlyOffP}>Solo países con actividades</p>
-                        <p onClick={alphabeticalSort} id={alphabeticalSortGlobal ? styles.alfabetoOn : styles.alfabetoOff}>Alfabético</p>
+                    <div className={styles.showContainer}>
+                        <div id={styles.activitiesOnly}>
+                            <div className={styles.orderDiv}>
+                                <label htmlFor="">km2</label>
+                                <div className={styles.orderSubDiv}>
+                                    <p onClick={() => areaSort('a')} id={areaRender === 'a' ? styles.orderOn : styles.orderOff}>↑</p>
+                                    <p onClick={() => areaSort('z')} id={areaRender === 'z' ? styles.orderOn : styles.orderOff}>↓</p>
+                                </div>
+                            </div>
+                            <div className={styles.orderDiv}>
+                                <label htmlFor="">Población</label>
+                                <div className={styles.orderSubDiv}>
+                                    <p onClick={() => populationSort('a')} id={populationRender === 'a' ? styles.orderOn : styles.orderOff}>↑</p>
+                                    <p onClick={() => populationSort('z')} id={populationRender === 'z' ? styles.orderOn : styles.orderOff}>↓</p>
+                                </div>
+                            </div>
+                            <div className={styles.orderDiv}>
+                                <label htmlFor="">Alfabético</label>
+                                <div className={styles.orderSubDiv}>
+                                    <p onClick={() => alphabeticalSort('a')} id={alphabeticalSortGlobal === 'a' ? styles.orderOn : styles.orderOff}>↑</p>
+                                    <p onClick={() => alphabeticalSort('z')} id={alphabeticalSortGlobal === 'z' ? styles.orderOn : styles.orderOff}>↓</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id={styles.activitiesOnly}>
+                            <p onClick={filterCountriesWActivities} id={onlyCountriesWActivities ? styles.activitiesOnlyOffP : styles.activitiesOnlyOnP}>Todos los países</p>
+                            <p className={styles.activitiesOnlyDown} onClick={filterCountriesWActivities} id={onlyCountriesWActivities ? styles.activitiesOnlyOnP : styles.activitiesOnlyOffP}>Con actividades</p>
+                        </div>
                     </div>
                 </div>
             </section>
+            <div className={styles.borrarDiv}>
+                <p>Filtros aplicados: <span>{numberOfFiltersSelected}</span></p>
+                <button onClick={removeFilters}>Borrar filtros</button>
+            </div>
             <p className={styles.seleccionaUnPais} id={!initialCountries.length && styles.filterSelectionsViewLoading}>Selecciona un país:</p>
             {initialCountries.length ?
                 <section className={styles.cardsView}>

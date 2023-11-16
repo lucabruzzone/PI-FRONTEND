@@ -1,6 +1,8 @@
 import activitiesOnly from '../utils/activitiesOnly';
 import { deleteDuplicatesActivities } from '../utils/deleteDuplicates';
 import alphabeticalSortFunction from '../utils/alphabeticalSortFunction';
+import areaOrderFunction from '../utils/AreaOrder';
+import populationOrderFunction from '../utils/PopulationOrder';
 import {
     SET_PAGE,
     SET_DISPLAY_MENU_BAR,
@@ -15,7 +17,9 @@ import {
     FILTER_CONTINENTS,
     REMOVE_ALL_FILTERS,
     FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES,
-    FILTER_ALPHABETICAL_SORT
+    FILTER_ALPHABETICAL_SORT,
+    FILTER_AREA_SORT,
+    FILTER_POPULATION_SORT,
 } from '../utils/actionTypes';
 
 const initialState = {
@@ -24,9 +28,11 @@ const initialState = {
     displayFiltersMobile: false,
     displayFilters: false,
     onlyCountriesWActivities: false,
-    alphabeticalRender: false,
+    alphabeticalRender: '',
+    areaRender: '',
+    populationRender: '',
     saveInitialCountries: [], // reserva los países iniciales para volver a mostrarlos una vez que se cierre el filtro mas estricto de todos (Mostrar solo países con actividades).
-    saveRenderCountries: [], // reserva algún cambio anterior de renCountries para volver a mostrarlo en algún momento
+    saveRenderCountries: [], // reserva algún cambio anterior de renderCountries para volver a mostrarlo en algún momento
     renderCountries: [],
     initialCountries: [],
     activitiesAvailable: [],
@@ -37,7 +43,6 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
-    /* let newArray = []; */
     let dinamicArray = action.payload;
 
     switch (action.type) {
@@ -83,6 +88,24 @@ const rootReducer = (state = initialState, action) => {
             }
             return { ...state, continentsFilter: state.continentsFilter.filter(continent => continent !== action.payload) };
 
+        case FILTER_ALPHABETICAL_SORT:
+            if (state.alphabeticalRender === action.payload) {
+                return {...state, alphabeticalRender: ''}
+            }
+            return {...state, alphabeticalRender: action.payload, areaRender: '', populationRender: ''}
+
+        case FILTER_AREA_SORT:
+            if (state.areaRender === action.payload) {
+                return {...state, areaRender: ''}
+            }
+            return {...state, areaRender: action.payload, alphabeticalRender: '', populationRender: ''}
+
+        case FILTER_POPULATION_SORT:
+            if (state.populationRender === action.payload) {
+                return {...state, populationRender: ''}
+            }
+            return {...state, populationRender: action.payload, alphabeticalRender: '', areaRender: ''}
+
 
 
 
@@ -95,19 +118,16 @@ const rootReducer = (state = initialState, action) => {
         case RENDER_COUNTRIES:
             // primero preguntamos si hay filtros seleccionados. En caso de que no hayan, saltamos al final de este CASE ya que el usuario no está utilizando los filtros.
             // si esque hay filtros seleccionados, comentamos a iterar cada lista de filtros.
+            if (state.onlyCountriesWActivities) {
+                dinamicArray = activitiesOnly(action.payload);
+            }
+
             if (state.activitiesFilter.length || state.difficultyFilter.length || state.seasonFilter.length || state.continentsFilter.length) {
 
                 // primero pregunta si esque hay filtros de actividades turísticas seleccionados
                 // para iterar en dos ciclos for las actividades de cada país y hacer un match con los filtros del usuario
                 // si se hace el match, entonces hacemos un push de ese país al array madre "newArray" que lo inicializamos antes de comenzar el SWITCH
                 if (state.activitiesFilter.length) {
-                    /* if (newArray.length) {
-                        let initialCountries = dinamicArray;
-                    }
-                    else if (!newArray.length) {
-                        initialCountries = action.payload;
-                    }
-                    count++; */
                     let newArray = [];
                     let initialCountries = dinamicArray;
                     for (const country of initialCountries) {
@@ -127,13 +147,6 @@ const rootReducer = (state = initialState, action) => {
 
                 // luego hace lo mismo pero con los filtros de dificultad de las actividades turísticas
                 if (state.difficultyFilter.length) {
-                    /* if (newArray.length) {
-                        initialCountries = newArray;
-                    }
-                    else if (!newArray.length) {
-                        initialCountries = action.payload;
-                    }
-                    count++; */
                     let newArray = [];
                     let initialCountries = dinamicArray;
                     for (const country of initialCountries) {
@@ -153,13 +166,6 @@ const rootReducer = (state = initialState, action) => {
 
                 // luego exactamente lo mismo pero con los filtros de las temporadas (verano, otoño..etc)
                 if (state.seasonFilter.length) {
-                    /* if (newArray.length) {
-                        initialCountries = newArray;
-                    }
-                    else if (!newArray.length) {
-                        initialCountries = action.payload;
-                    }
-                    count++; */
                     let newArray = [];
                     let initialCountries = dinamicArray;
                     for (const country of initialCountries) {
@@ -179,13 +185,6 @@ const rootReducer = (state = initialState, action) => {
 
                 // y aquí sigue con los filtros de continentes
                 if (state.continentsFilter.length) {
-                    /* if (newArray.length) {
-                        initialCountries = newArray;
-                    }
-                    else if (!newArray.length) {
-                        initialCountries = action.payload;
-                    }
-                    count++; */
                     let newArray = [];
                     let initialCountries = dinamicArray;
                     for (const country of initialCountries) {
@@ -200,25 +199,20 @@ const rootReducer = (state = initialState, action) => {
                     }
                     dinamicArray = newArray;
                 }
-
-                // Finalmente preguntamos si el array madre se llenó con países filtrados o no.
-                // si se llenó, quiere decir que los filtros están activos y modificarán el renderizado de los países.
-                // pero antes, debemos eliminar los países duplicados en el array (si esque se duplicaron).
-                // para eso, llamamos a la función "deleteDuplicates" que hace ese trabajo y finalmente retornamos el renderizado con los cambios.
-                // De lo contrario, si el array madre está vacío, quiere decir que no hay ningún país que coincida con el o los filtros seleccionados por el usuario.
-                // por lo tanto simplemente retornamos el estado con el array vacío para que muestre la bandeja vacía sin países.
-                /* if (newArray.length) {
-                    if (count > 1) {
-                        const paisesFiltrados = returnDuplicates(newArray, 'nombre');
-                        return { ...state, page: 1, renderCountries: paisesFiltrados };
-                    }
-                    return { ...state, page: 1, renderCountries: newArray };
-                    const arraySinDuplicados = deleteDuplicates(newArray);
-                    return { ...state, page: 1, renderCountries: arraySinDuplicados };
-                }
-                return { ...state, page: 1, renderCountries: newArray }; */
             }
-            /* return { ...state, page: 1, renderCountries: action.payload }; */
+
+            if (state.alphabeticalRender !== '') {
+                dinamicArray = alphabeticalSortFunction(dinamicArray, state.alphabeticalRender);
+            }
+
+            if (state.areaRender !== '') {
+                dinamicArray = areaOrderFunction(dinamicArray, state.areaRender);
+            }
+
+            if (state.populationRender !== '') {
+                dinamicArray = populationOrderFunction(dinamicArray, state.populationRender);
+            }
+
             return { ...state, page: 1, renderCountries: dinamicArray };
 
 
@@ -228,21 +222,10 @@ const rootReducer = (state = initialState, action) => {
             
 
         case REMOVE_ALL_FILTERS: // remueve todos los filtros seleccionados
-            return { ...state, page: 1, activitiesFilter: [], difficultyFilter: [], seasonFilter: [], continentsFilter: [], renderCountries: state.initialCountries };
+            return { ...state, page: 1, activitiesFilter: [], difficultyFilter: [], seasonFilter: [], continentsFilter: [] };
 
         case FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES: // renderiza solo los países que cuentan con actividades turísticas
-            if (!state.onlyCountriesWActivities) {
-                return { ...state, page: 1, initialCountries: activitiesOnly(action.payload), renderCountries: activitiesOnly(action.payload), onlyCountriesWActivities: true };
-            }
-            // volvemos a mostrar todos los países de la BDD y limpiamos también todos los filtros
-            return { ...state, page: 1, initialCountries: state.saveInitialCountries, renderCountries: state.saveInitialCountries, onlyCountriesWActivities: false, activitiesFilter: [], difficultyFilter: [], seasonFilter: [], continentsFilter: [] };
-
-        case FILTER_ALPHABETICAL_SORT:
-            if (!state.alphabeticalRender) {
-                const buckUp = state.renderCountries;
-                return { ...state, alphabeticalRender: !state.alphabeticalRender, saveRenderCountries: buckUp, renderCountries: alphabeticalSortFunction(state.renderCountries) };
-            }
-            return { ...state, alphabeticalRender: !state.alphabeticalRender, renderCountries: state.saveRenderCountries };
+        return {...state, onlyCountriesWActivities: !state.onlyCountriesWActivities}
 
         default:
             return { ...state };

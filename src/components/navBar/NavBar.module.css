@@ -42,15 +42,6 @@
             #f1f3f5), url('../../img/countries.png');
     background-position: top;
     background-size: cover;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.095);
-    /* box-shadow: var(--little-box-shadow); */
-}
-
-@media only screen and (min-width: 700px) {
-    .mainView {
-        position: sticky;
-        top: 0;
-    }
 }
 
 .navBarContainer {
@@ -180,6 +171,7 @@
 }
 
 .navLinkDesktop{
+    position: relative;
     text-decoration: none;
     height: var(--height-buttons);
     flex: 1;
@@ -232,6 +224,23 @@
     width: 10px;
 }
 
+.countOn{
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+    width: 17px;
+    height: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 12px;
+}
+
+.countOff{
+    display: none;
+}
+
 
 
 
@@ -260,7 +269,7 @@
 
 .filterDesktopDisplayed{
     /* height: 340px; */
-    height: 280px;
+    height: 230px;
     transition: all .3s;
 }
 
@@ -408,6 +417,6 @@ li {
 }
 
 .filterMobileDisplayed{
-    height: 900px;
+    /* height: 900px; */
     transition: all .3s;
 }

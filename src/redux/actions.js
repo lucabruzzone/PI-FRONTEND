@@ -12,7 +12,9 @@ import {
     FILTER_CONTINENTS,
     REMOVE_ALL_FILTERS,
     FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES,
-    FILTER_ALPHABETICAL_SORT
+    FILTER_ALPHABETICAL_SORT,
+    FILTER_AREA_SORT,
+    FILTER_POPULATION_SORT
 } from '../utils/actionTypes';
 
 export const actionSetPage = (value) => { // action para setear true o false si está abierto o cerrado el menu mobile
@@ -77,6 +79,14 @@ export const actionFilterOnlyActivities = (array) => { // agrega
     return { type: FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES, payload: array }
 }
 
-export const actionAlphabeticalSort = (array) => { // agrega
-    return { type: FILTER_ALPHABETICAL_SORT, payload: array }
+export const actionAlphabeticalSort = (letter) => { // agrega
+    return { type: FILTER_ALPHABETICAL_SORT, payload: letter }
+}
+
+export const actionAreaSort = (letter) => { // agrega
+    return { type: FILTER_AREA_SORT, payload: letter }
+}
+
+export const actionPopulationSort = (letter) => { // agrega
+    return { type: FILTER_POPULATION_SORT, payload: letter }
 }

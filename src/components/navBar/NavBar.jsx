@@ -4,6 +4,7 @@ import countriesIcon from '../../img/mountain-sun-solid.svg';
 import menuIcon from '../../img/menuIcon.svg';
 import searchIcon from '../../img/searchIcon.svg';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { HOME, FORM, URL, COUNTRY } from '../../utils/pathroutes';
 import { useNavigate, useLocation, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,6 +18,11 @@ function NavBar() {
     const displayFiltersMobile = useSelector(state => state.displayFiltersMobile);
     const globalDisplayFilters = useSelector(state => state.displayFilters);
     const initialCountries = useSelector(state => state.initialCountries);
+    const activitiesFilter = useSelector(state => state.activitiesFilter);
+    const difficultyFilter = useSelector(state => state.difficultyFilter);
+    const seasonFilter = useSelector(state => state.seasonFilter);
+    const continentsFilter = useSelector(state => state.continentsFilter);
+    const [numberOfFiltersSelected, setNumberOfFiltersSelected] = useState(0);
 
     async function handleSearch(e) {
         try {
@@ -45,6 +51,11 @@ function NavBar() {
             dispatch(actionDisplayMobileFilters(!displayFiltersMobile));
         }
     }
+
+    useEffect(() => { // esto es para saber la cantidad de filtros aplicados
+        const suma = activitiesFilter.length + difficultyFilter.length + seasonFilter.length + continentsFilter.length;
+        setNumberOfFiltersSelected(suma);
+    }, [activitiesFilter, difficultyFilter, seasonFilter, continentsFilter]);
 
     return (
         <div className={styles.mainView}>
@@ -77,6 +88,7 @@ function NavBar() {
                         {location.pathname !== '/' &&
                             <NavLink className={styles.navLinkDesktop}>
                                 <button onClick={handlerFilters} id={globalDisplayFilters ? styles.filtersOn : styles.filters} className={globalDisplayFilters ? styles.filters : styles.filters2}>Filtros</button>
+                                <p className={numberOfFiltersSelected === 0 ? styles.countOff : styles.countOn}>{numberOfFiltersSelected}</p>
                             </NavLink>
                         }
                     </ul>

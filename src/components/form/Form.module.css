@@ -25,12 +25,13 @@
 
 .mainContainer p {
     width: 85%;
-    font-size: 22px;
     margin-top: 10px;
+    margin-bottom: 20px;
     font-weight: 400;
 }
 
 .nuevaActividad{
+    font-size: 25px;
     color: black;
 }
 
@@ -388,14 +389,16 @@
 /* SUBMIT BUTTON */
 
 #submitButton {
-    margin-top: 20px;
     padding: 5px 10px;
+    margin: 30px auto 30px auto;
     height: 50px;
-    width: auto;
-    font-size: 17px;
+    width: 70%;
+    font-size: 18px;
+    font-weight: var(--main-font-weight);
     border-radius: 1000px;
-    align-items: center;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .submitButtonOff {

@@ -28,6 +28,7 @@
 }
 
 .mainView {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     background-color: var(--gray-bgcolor);
@@ -40,8 +41,17 @@
     width: 100%;
     /* max-width: 1000px; */
     /* margin-top: 20px; */
-    padding: var(--view-side-padding);
+    /* padding: var(--view-side-padding); */
     background-color: var(--light-bgcolor);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.095);
+}
+
+@media only screen and (min-width: 700px) {
+    .filterSelectionsView{
+        position: sticky;
+        top: 0;
+        z-index: 130;
+    }
 }
 
 #filterSelectionsViewLoading{
@@ -53,26 +63,12 @@
     max-width: 1000px;
     position: relative;
     width: 100%;
-    min-height: 200px;
     padding: var(--view-side-padding);
     padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
-
-.filterSelectionsContainer button{
-    border: none;
-    font-size: 18px;
-    color: var(--main-border-color);
-    font-weight: var(--main-font-weight);
-    background-color: transparent;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.filterSelectionsContainer button:hover{
-    opacity: .7;
 }
 
 .filterSelectionsContainer p{
@@ -84,50 +80,53 @@
     font-weight: var(--main-font-weight);
 }
 
-.filterSelectionsContainer span{
-    color: var(--main-border-color);
-    font-weight: var(--main-font-weight);
-}
 
-.order{
-    align-self: center;
+
+
+
+
+
+
+
+/*  SHOW SECTION */
+
+.showContainer{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 #activitiesOnly{
-    position: absolute;
-    bottom: 10px;
-    right: 0;
-    left: 50%;
-    transform: translateX(-50%);
     height: auto;
-    width: 100%;
+    flex: 1;
     max-width: 270px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    /* border-radius: var(--main-border-radius);
-    border: 1px solid var(--main-border-color); */
+    /* align-items: center; */
+    gap: 5px;
     overflow: hidden;
-    cursor: pointer;
 }
 
 #activitiesOnly p{
-    height: 100%;
-    width: 100%;
+    height: auto;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4px 0;
-    margin-bottom: 3px;
+    padding: 4px 10px;
     font-size: 15px;
     border-radius: 50px;
+    cursor: pointer;
 }
 
-.activitiesOnlyDown::after{
-    content: url(../../img/person-hiking-solid.svg);
-    height: 100%;
-    width: 13px;
-    margin-left: 10px;
+@media only screen and (min-width: 500px) {
+    .activitiesOnlyDown::after{
+        content: url(../../img/person-hiking-solid.svg);
+        height: 100%;
+        width: 13px;
+        margin-left: 10px;
+    }
 }
 
 #activitiesOnlyOnP{
@@ -138,18 +137,55 @@
 }
 
 #activitiesOnlyOffP{
+    background-color: var(--gray-bgcolor);
+    border-radius: 50px;
+}
+
+#activitiesOnlyOffP:hover{
     color: var(--main-border-color);
 }
 
-#alfabetoOn{
+.orderDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.orderDiv label{
+    font-size: 15px;
+}
+
+.orderSubDiv{
+    flex: 1;
+    max-width: 50%;
+    color: var(--main-border-color);
+    background-color: var(--gray-bgcolor);
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 3px;
+}
+
+.orderSubDiv p{
+    flex: 1;
+}
+
+.orderSubDiv p:hover{
+    color: var(--main-border-color);
+}
+
+#orderOn{
     background-color: var(--main-border-color);
     border-radius: 50px;
     color: white;
 }
 
-#alfabetoOff{
+/* #orderOff{
     color: var(--main-border-color);
-}
+    background-color: var(--gray-bgcolor);
+    border: 1px solid white;
+    border-radius: 50px;
+} */
 
 
 
@@ -163,12 +199,39 @@
 
 /* MAIN SECTION */
 
+.borrarDiv{
+    margin-top: 20px;
+}
+
+.borrarDiv button{
+    border: none;
+    font-size: 16px;
+    color: var(--main-border-color);
+    font-weight: var(--main-font-weight);
+    background-color: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.borrarDiv button:hover{
+    opacity: .8;
+}
+
+.borrarDiv p{
+    font-size: 18px;
+}
+
+.borrarDiv span{
+    color: red;
+    font-weight: var(--main-font-weight);
+}
+
 .seleccionaUnPais{
     width: 100%;
     max-width: 1000px;
-    margin: 30px 0 10px 0;
+    margin: 30px 0 0 0;
     padding: var(--view-side-padding);
-    color: var(--gray-font-color);
+    color: black;
     font-size: 22px;
     text-align: center;
 }

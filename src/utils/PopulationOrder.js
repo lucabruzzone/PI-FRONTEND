@@ -1,7 +1,7 @@
-function alphabeticalSortFunction(array, letter) {
+function populationOrderFunction(array, letter) {
     const arrayOrdenado = array.slice().sort((a, b) => {
-        const nombreA = a.nombre.toUpperCase();
-        const nombreB = b.nombre.toUpperCase();
+        const nombreA = a.poblacion;
+        const nombreB = b.poblacion;
         if (letter === 'a') {
             if (nombreA < nombreB) {
                 return -1;
@@ -24,4 +24,4 @@ function alphabeticalSortFunction(array, letter) {
     return arrayOrdenado;
 }
 
-export default alphabeticalSortFunction;
+export default populationOrderFunction;
