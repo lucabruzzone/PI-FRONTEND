@@ -52,6 +52,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: pulseMove;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.42, 0.32, 0.21, 1.3);
 }
 
 .buttonContainer p {
@@ -60,10 +63,13 @@
 }
 
 .button {
+    position: relative;
+    z-index: 10;
     cursor: pointer;
     border: none;
     border-radius: 50px;
     background: var(--button-main-color);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.418);
     color: white;
     height: 70px;
     width: 300px;
@@ -72,6 +78,65 @@
 }
 
 .button:hover {
-    box-shadow: var(--main-box-shadow);
     background: var(--button-hover-color);
+    animation: pulseScale 1s ease-in-out infinite;
+}
+
+.button::after{
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50px;
+    height: 70px;
+    width: 300px;
+    background: var(--button-main-color);
+    opacity: .3;
+    /* animation: pulseBgScale 1s ease 2s infinite both; */
+}
+
+@media only screen and (max-width: 500px) {
+    .button {
+        height: 55px;
+        width: 220px;
+        font-size: 25px;
+    }
+
+    .button::after{
+        height: 55px;
+        width: 220px;
+    }
+}
+
+@keyframes pulseMove {
+    from {
+        transform: translateY(-550%);
+        opacity: 0;
+    }
+    50% {
+        scale: 1.3;
+        opacity: .4;
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes pulseScale {
+    0% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.1;
+    }
+}
+
+@keyframes pulseBgScale {
+    0% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.1;
+    }
 }

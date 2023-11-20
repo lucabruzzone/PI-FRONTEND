@@ -200,6 +200,7 @@
 
 .borrarDiv{
     margin-top: 20px;
+    position: relative;
 }
 
 .borrarDiv button{
@@ -221,8 +222,23 @@
 }
 
 .borrarDiv span{
+    position: absolute;
+    right: -15px;
     color: red;
     font-weight: var(--main-font-weight);
+    animation: jumpIcon 1s ease;
+}
+
+@keyframes jumpIcon {
+    30% {
+        transform: translateY(-30%);
+    }
+    60% {
+        transform: translateY(30%);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .seleccionaUnPais{
@@ -250,14 +266,13 @@
     padding-top: 10px;
     padding-bottom: 100px;
     /* display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap; */
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 15px; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    /* grid-template-rows: minmax(1fr, 1fr); */
     grid-gap: 20px;
     grid-row-gap: 50px;
-    /* grid-auto-rows: 160px; */
 }
 
 @media only screen and (max-width: 500px) {
@@ -267,17 +282,35 @@
 }
 
 .cardComponentBox {
+    /* flex: 1;
+    min-width: 200px;
+    max-width: 240px;
+    margin-bottom: 25px; */
     height: 160px;
-    /* max-width: 260px; */
-    /* min-width: 220px; */
     background-color: var(--off-border-color);
     border: 1px solid var(--off-border-color);
     border-radius: 25px;
+    animation: scrollReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 15% cover 25%;
 }
 
 @media only screen and (max-width: 500px) {
     .cardComponentBox {
         height: 100px;
+    }
+}
+
+@keyframes scrollReveal {
+    from {
+        opacity: 0;
+        scale: .8;
+        translate: 0 20px;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+        translate: 0 0;
     }
 }
 

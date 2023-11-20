@@ -39,18 +39,21 @@
     height: 100%;
     position: relative;
     border-radius: 25px;
-    /* border-radius: var(--main-border-radius); */
-    /* border: 2px solid var(--main-border-color); */
-    box-shadow: var(--medium-box-shadow);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.352);
     overflow: hidden;
-    transition: all .2s;
+    transition: all .3s;
 }
 
-.imgContainer:hover {
-    /* box-shadow: var(--high-box-shadow); */
+.imgContainerHover {
     box-shadow: none;
     scale: 1.05;
-    transition: all .2s;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 25px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.352);
+    overflow: hidden;
+    transition: all .3s;
 }
 
 .flagImg {
@@ -69,9 +72,16 @@
     transition: all .2s;
 }
 
-.overlay:hover {
-    /* background-color: rgba(255, 255, 255, 0.4); */
+.overlayHover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    cursor: pointer;
     background-color: rgba(0, 0, 0, 0.6);
+    transition: all .2s;
 }
 
 .countryName {
@@ -82,24 +92,30 @@
 }
 
 .zoomIcon {
-    display: none;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     position: absolute;
-    height: 70px;
-    width: 80%;
-    top: 60%;
+    height: 35%;
+    width: 100%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+    transition: all .3s;
 }
 
 #zoomIconHidden{
-    display: inline;
+    opacity: 1;
 }
 
 .zoomIcon img{
     height: 30px;
+    width: 30px;
     padding: 5px;
-    border-radius: var(--main-border-radius);
+    border-radius: 100%;
     background-color: white;
 }
 
@@ -117,21 +133,6 @@
     .zoomIcon p {
         font-size: 13px;
     }
-}
-
-.addIcon{
-    position: absolute;
-    width: 20px;
-    padding: 1px;
-    top: 10px;
-    right: 10px;
-    border-radius: 4px;
-    background-color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-
-.addIcon:hover{
-    background-color: rgb(193, 193, 193);
 }
 
 
@@ -159,7 +160,7 @@
 }
 
 #numberDownHidden{
-    display: none;
+    opacity: 0;
 }
 
 .numberDown img{
@@ -190,23 +191,25 @@
 /* NUMBER POPULATION */
 
 .numberPopulation{
+    opacity: 0;
     position: absolute;
     bottom: 5px;
     right: 16px;
     width: auto;
     height: 17px;
     padding: 0 4px;
-    display: none;
+    display: flex;
+    align-items: center;
     border-radius: var(--main-border-radius);
     background-color: white;
     font-size: 13px;
     font-weight: var(--main-font-weight);
     color: var(--main-border-color);
+    transition: all .3s;
 }
 
 #numberPopulationHidden{
-    display: flex;
-    align-items: center;
+    opacity: 1;
 }
 
 .numberPopulation img{
@@ -237,23 +240,25 @@
 /* NUMBER AREA */
 
 .numberArea{
+    opacity: 0;
     position: absolute;
     top: 5px;
     right: 16px;
     width: auto;
     height: 17px;
     padding: 0 4px;
-    display: none;
+    display: flex;
+    align-items: center;
     border-radius: var(--main-border-radius);
     background-color: white;
     font-size: 13px;
     font-weight: var(--main-font-weight);
     color: var(--main-border-color);
+    transition: all .3s;
 }
 
 #numberAreaHidden{
-    display: flex;
-    align-items: center;
+    opacity: 1;
 }
 
 .numberArea img{

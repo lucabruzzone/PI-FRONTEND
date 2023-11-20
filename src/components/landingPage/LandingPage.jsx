@@ -33,15 +33,12 @@ function LandingPage() {
         <div className={styles.mainView}>
             <div className={styles.buttonContainer}>
                 <NavLink className={styles.navLink} to={HOME}>
-                    <button className={styles.button}>Empezar</button>
+                    <button className={styles.button}>Comenzar</button>
                 </NavLink>
             </div>
             <div ref={videoRef} className={styles.videoContainer}>
                 <img src={videos[currentVideoIndex]} type="" />
             </div>
-            {/* <video ref={videoRef} className={styles.videoContainer} autoPlay loop muted>
-                <source src={videos[currentVideoIndex]} type="video/mp4" />
-            </video> */}
         </div>
     );
 }

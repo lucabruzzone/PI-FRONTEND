@@ -226,7 +226,7 @@
 
 .countOn{
     position: absolute;
-    bottom: 0;
+    bottom: 8px;
     right: 40px;
     width: 17px;
     height: 17px;
@@ -236,10 +236,23 @@
     color: red;
     font-size: 12px;
     font-weight: var(--main-font-weight);
+    animation: jumpIcon 1s ease;
 }
 
 .countOff{
     display: none;
+}
+
+@keyframes jumpIcon {
+    30% {
+        transform: translateY(-30%);
+    }
+    60% {
+        transform: translateY(30%);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 

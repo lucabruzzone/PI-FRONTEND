@@ -115,13 +115,13 @@ function Home() {
                     </div>
                 </div>
             </section>
-            <div className={styles.borrarDiv}>
-                <p>Filtros aplicados: <span>{numberOfFiltersSelected}</span></p>
-                <button onClick={removeFilters}>Borrar filtros</button>
-            </div>
-            <p className={styles.seleccionaUnPais} id={!initialCountries.length && styles.filterSelectionsViewLoading}>Selecciona un país:</p>
             {initialCountries.length ?
                 <section className={styles.cardsView}>
+                    <div className={styles.borrarDiv}>
+                        <p>Filtros aplicados: {numberOfFiltersSelected > 0 && <span>{numberOfFiltersSelected}</span>}</p>
+                        <button onClick={removeFilters}>Borrar filtros</button>
+                    </div>
+                    <p className={styles.seleccionaUnPais} id={!initialCountries.length && styles.filterSelectionsViewLoading}>Selecciona un país:</p>
                     <div className={styles.paginado1}>
                         <Paginado totalPages={totalPages} />
                     </div>
