@@ -21,7 +21,7 @@ function Card({ country }) {
     function handleDetail(e) {
         // para aparatos móviles el el efecto hover lo cambiamos a un click, por lo tanto para navegar al detail hay que hacer dos clicks.
         e.preventDefault();
-        /* if (windowDimensions.width <= 500) {
+        if (windowDimensions.width <= 500) {
             if (preDetail) {
                 navigate(`${DETAIL}/${ID}`);
             }
@@ -29,8 +29,7 @@ function Card({ country }) {
         }
         else {
             navigate(`${DETAIL}/${ID}`);
-        } */
-        navigate(`${DETAIL}/${ID}`);
+        }
     }
 
     function handleMouseOver(e) {
