@@ -24,13 +24,32 @@ function NavBar() {
     const continentsFilter = useSelector(state => state.continentsFilter);
     const [numberOfFiltersSelected, setNumberOfFiltersSelected] = useState(0);
 
-    async function handleSearch(e) {
+    /* async function handleSearch(e) {
         try {
             const value = e.target.value;
             if (value !== '') {
                 const { data } = await axios(`${URL}/${COUNTRY}?name=${value}`);
+                console.log(data);
                 if (data) {
                     dispatch(actionRenderCountries([data, 'searchBar']));
+                }
+            }
+            else dispatch(actionRenderCountries(initialCountries));
+        } catch (error) {
+            dispatch(actionRenderCountries([]));
+            console.error(error.message);
+        }
+    } */
+
+    async function handleSearch(e) {
+        try {
+            const value = e.target.value;
+            if (value !== '') {
+                const filtro = initialCountries.filter(country => {
+                    return country.nombre.toUpperCase().includes(value.toUpperCase());
+                })
+                if (filtro) {
+                    dispatch(actionRenderCountries([filtro, 'searchBar']));
                 }
             }
             else dispatch(actionRenderCountries(initialCountries));
