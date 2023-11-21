@@ -39,7 +39,7 @@ function Form() {
         if (id === 'duracion') setNewActivity({ ...newActivity, duracion: value });
     }
 
-    async function handleSearch(e) {
+    /* async function handleSearch(e) {
         try {
             const value = e.target.value;
             // seteamos el estado valueSearch para no tener conflicos al seleccionar el país en la tabla 
@@ -55,6 +55,25 @@ function Form() {
         } catch (error) {
             dispatch(actionRenderCountries([]));
             console.log(error.message);
+        }
+    } */
+
+    async function handleSearch(e) {
+        try {
+            const value = e.target.value;
+            setValueSearch(value);
+            if (value !== '') {
+                const filtro = initialCountries.filter(country => {
+                    return country.nombre.toUpperCase().includes(value.toUpperCase());
+                })
+                if (filtro) {
+                    dispatch(actionRenderCountries([filtro, 'searchBar']));
+                }
+            }
+            else dispatch(actionRenderCountries(initialCountries));
+        } catch (error) {
+            dispatch(actionRenderCountries([]));
+            console.error(error.message);
         }
     }
 
