@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 #loading{
@@ -12,7 +13,7 @@
     border: 7px solid transparent;
     border-top-color: var(--button-main-color);
     border-radius: 50%;
-    animation: loading 0.75s ease infinite;
+    animation: loading 0.75s linear infinite;
 }
 
 @keyframes loading{

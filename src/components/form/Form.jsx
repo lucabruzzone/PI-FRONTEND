@@ -1,7 +1,7 @@
 import styles from './Form.module.css';
 import axios from 'axios';
 import flagIcon from '../../img/flag-solid.svg';
-import { HOME, COUNTRY, URL, ACTIVITIES, SUCCESSFORM } from '../../utils/pathroutes';
+import { HOME, COUNTRY, URL, ACTIVITIES, SUCCESSFORM, FORM } from '../../utils/pathroutes';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -99,12 +99,11 @@ function Form() {
     async function handleSubmit(e) {
         // nos aseguramos una vez más de que los datos del formulario estén completos
         try {
-            if (newActivity.paises.length) {
-                const { data } = axios.post(`${URL}/${ACTIVITIES}`, newActivity);
-                if (data) alert('Actividad creada con éxito');
-            }
             e.preventDefault();
-            navigate(SUCCESSFORM);
+            if (newActivity.paises.length) {
+                axios.post(`${URL}/${ACTIVITIES}`, newActivity);
+                navigate(SUCCESSFORM);
+            }
         } catch (error) {
             console.log(error.message);
         }

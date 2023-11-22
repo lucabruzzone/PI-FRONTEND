@@ -177,7 +177,9 @@
 .valuesRowsTable{
     width: 100%;
     min-height: 300px;
+    max-height: 600px;
     padding-bottom: 15px;
+    overflow-y: scroll;
 }
 
 .eachRow{
