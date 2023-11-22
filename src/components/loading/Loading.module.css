@@ -16,7 +16,38 @@
     animation: loading 0.75s linear infinite;
 }
 
+
+
+
+
+
+/* EFECTOS */
+
 @keyframes loading{
     from { transform: rotate(0turn) }
     to { transform: rotate(1turn) }
+}
+
+@keyframes moveEffect {
+    to{
+        width: 100%;
+    }
+}
+
+@keyframes scale{
+    to { scale: 0 }
+}
+
+@keyframes width{
+    to { width: 0% }
+}
+
+@keyframes shine{
+    from {
+        background-color: white;
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

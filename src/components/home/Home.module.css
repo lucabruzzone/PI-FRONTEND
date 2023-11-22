@@ -353,10 +353,9 @@
     height: 200%;
     width: 40%;
     background-color: var(--main-border-color);
-    opacity: .2;
+    opacity: .4;
     z-index: 46;
-    animation: 
-    loading 6s linear infinite;
+    animation: loading 6s linear infinite;
 }
 
 .falseCard2{
@@ -369,6 +368,7 @@
     border-radius: 25px;
     background-color: var(--off-border-color);
     z-index: 47;
+    animation: shine 1s ease-in-out infinite alternate;
 }
 
 @keyframes moveEffect {
@@ -380,6 +380,12 @@
 @keyframes loading{
     from { transform: rotate(0turn) }
     to { transform: rotate(1turn) }
+}
+
+@keyframes shine{
+    to {
+        background-color: rgb(247, 247, 247);
+    }
 }
 
 
