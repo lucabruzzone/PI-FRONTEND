@@ -138,35 +138,27 @@ function Home() {
                         <div className={styles.cardsContainer} id={styles.falseCardsContainer}>
                             <div className={styles.cardComponentBox}>
                                 <div className={styles.falseCard}></div>
-                                <div className={styles.falseCard2}></div>
                             </div>
                             <div className={styles.cardComponentBox}>
                                 <div className={styles.falseCard}></div>
-                                <div className={styles.falseCard2}></div>
                             </div>
                             <div className={styles.cardComponentBox}>
                                 <div className={styles.falseCard}></div>
-                                <div className={styles.falseCard2}></div>
                             </div>
                             <div className={styles.cardComponentBox}>
                                 <div className={styles.falseCard}></div>
-                                <div className={styles.falseCard2}></div>
                             </div>
                             <div className={styles.cardComponentBox}>
                                 <div className={styles.falseCard}></div>
-                                <div className={styles.falseCard2}></div>
                             </div>
                             <div className={styles.cardComponentBox}>
                                 <div className={styles.falseCard}></div>
-                                <div className={styles.falseCard2}></div>
                             </div>
                             <div className={styles.cardComponentBox}>
                                 <div className={styles.falseCard}></div>
-                                <div className={styles.falseCard2}></div>
                             </div>
                             <div className={styles.cardComponentBox}>
                                 <div className={styles.falseCard}></div>
-                                <div className={styles.falseCard2}></div>
                             </div>
                         </div>
                     }

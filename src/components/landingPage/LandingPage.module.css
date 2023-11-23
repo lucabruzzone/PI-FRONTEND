@@ -25,10 +25,9 @@
     position: relative;
     width: 100%;
     height: 800px;
-    min-height: 100vh;
     background-image: linear-gradient(to bottom,
-            rgba(104, 167, 250, 0.546),
-            rgba(255, 255, 255, 0.297)), url('../../img/countries.png');
+            rgba(104, 167, 250, 0.191),
+            rgba(255, 255, 255, 0.183)), url('../../img/countries.png');
     background-position: top;
     background-size: cover;
     display: flex;
@@ -42,9 +41,7 @@
 .videoContainer {
     position: absolute;
     top: 0;
-    height: 100%;
     object-fit: cover;
-    object-position: center;
     z-index: -1;
 }
 
@@ -71,8 +68,8 @@
     background: var(--button-main-color);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.418);
     color: white;
-    height: 70px;
-    width: 300px;
+    height: 55px;
+    width: 270px;
     font-size: 25px;
     font-weight: 600;
 }
@@ -89,8 +86,8 @@
     top: 0;
     left: 0;
     border-radius: 50px;
-    height: 70px;
-    width: 300px;
+    height: 55px;
+    width: 270px;
     background: var(--button-main-color);
     opacity: .3;
     /* animation: pulseBgScale 1s ease 2s infinite both; */
@@ -115,7 +112,7 @@
         opacity: 0;
     }
     50% {
-        scale: 1.3;
+        scale: 1.2;
         opacity: .4;
     }
     100% {

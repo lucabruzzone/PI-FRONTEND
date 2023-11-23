@@ -13,8 +13,9 @@ function Form() {
     const initialCountries = useSelector(state => state.initialCountries);
     const renderCountries = useSelector(state => state.renderCountries);
     const [displayedTable, setDisplayedTable] = useState(false);
-    const [formCompleted, setFormCompleted] = useState(false);
     const [displayedSelectedCountries, setDisplayedSelectedCountries] = useState(false);
+    const [errors, setErrors] = useState(null);
+    const [formCompleted, setFormCompleted] = useState(false);
     const [valueSearch, setValueSearch] = useState('');
     const [newActivity, setNewActivity] = useState({
         nombre: '',
@@ -29,6 +30,8 @@ function Form() {
     }
 
     function handleInput(e) {
+        //inmediatamente avisamos al usuario que debe completar todos los datos.
+        setErrors('Debe completar todos los campos');
         const value = e.target.value;
         const id = e.target.id;
         const title = e.target.title;
@@ -79,13 +82,16 @@ function Form() {
 
     function handleCountrySelect(e) {
         const countryName = e.target.id;
-        // seteamos el estado valueSearch para que se escriba automáticamente en el input al seleccionar el país en la tabla:
+        // seteamos el estado local valueSearch para que se escriba automáticamente en el input, el país que acabamos de seleccionar en la tabla.
         setValueSearch(countryName);
         // luego buscamos si el país seleccionado ya lo habíamos ingresado, para que no se repitan:
         const match = newActivity.paises.some(nombre => {
             return nombre === countryName;
         })
-        if (!match) setNewActivity({ ...newActivity, paises: [...newActivity.paises, countryName] });
+        if (!match) {
+            setErrors('Debe completar todos los campos');
+            setNewActivity({ ...newActivity, paises: [...newActivity.paises, countryName] });
+        }
     }
 
     function deleteCountry(e) {
@@ -100,7 +106,7 @@ function Form() {
         // nos aseguramos una vez más de que los datos del formulario estén completos
         try {
             e.preventDefault();
-            if (newActivity.paises.length) {
+            if (formCompleted) {
                 axios.post(`${URL}/${ACTIVITIES}`, newActivity);
                 navigate(SUCCESSFORM);
             }
@@ -137,7 +143,10 @@ function Form() {
         if (!newActivity.paises.length || newActivity.nombre === '' || newActivity.temporada === '' || !newActivity.dificultad || !newActivity.duracion) {
             setFormCompleted(false);
         }
-        else return setFormCompleted(true);
+        else {
+            setErrors(null);
+            return setFormCompleted(true);
+        }
     }, [newActivity]);
 
     return (
@@ -156,9 +165,9 @@ function Form() {
                         <div className={styles.inputBox}>
                             <input value={valueSearch} onChange={handleSearch} onFocus={handleFocus} onBlur={handleBlur} id='paises' type="search" autoComplete='off' placeholder='Puedes agregar mas de un país' />
                             <div className={styles.inputBoxImgBox}>
-                                <p>{newActivity.paises.length}</p>
+                                <p className={newActivity.paises.length && styles.countriesCount}>{newActivity.paises.length}</p>
                                 <img src={flagIcon} alt="" />
-                                <p onClick={handleMiniTable} id={styles.inputBoxImgBoxAfter}>Ver países seleccionados</p>
+                                <p onClick={handleMiniTable} id={styles.inputBoxImgBoxAfter}>{displayedSelectedCountries && newActivity.paises.length ? 'Ocultar países' : 'Ver países seleccionados'}</p>
                                 <div className={styles.seleccionPaisContainer} id={displayedTable ? '' : styles.hidden}>
                                     {renderCountries?.map((country, i) => {
                                         const name = country.nombre;
@@ -214,6 +223,7 @@ function Form() {
                             <p className={newActivity.temporada === 'Primavera' && styles.tempOn} onClick={handleInput} id='Primavera'>Primavera</p>
                         </div>
                     </div>
+                    {errors && <p className={styles.errorMessage}>{errors}</p>}
                     <button id={styles.submitButton} className={formCompleted ? styles.submitButtonOn : styles.submitButtonOff}>
                         Crear actividad
                     </button>
