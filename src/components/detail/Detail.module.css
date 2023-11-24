@@ -1,4 +1,5 @@
 .mainView {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     background-color: var(--gray-bgcolor);
@@ -23,7 +24,7 @@
 .firstViewContainer{
     width: 100%;
     max-width: 800px;
-    height: 200px;
+    min-height: 200px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -41,6 +42,7 @@
 
 .infoContainer{
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -55,6 +57,12 @@
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
+}
+
+.nombre p{
+    line-height: normal;
+    width: 100%;
+    text-align: left;
 }
 
 @media only screen and (max-width: 700px) {
@@ -186,12 +194,10 @@
     width: 100%;
     height: 40px;
     display: flex;
-    border-bottom: 1px solid var(--hover-border-color);
 }
 
-.eachRow:hover{
-    background-color: var(--main-border-color);
-    color: var(--light-font-color);
+.eachRow:nth-child(odd){
+    background-color: #89cff05c;
 }
 
 .actividadValue{
@@ -225,13 +231,6 @@
     color: black;
     overflow: hidden;
 }
-
-/* .actividadValue::after{
-    content: '＋';
-    position: absolute;
-    right: 0;
-    color: var(--light-font-color);
-} */
 
 @media only screen and (max-width: 600px) {
     .actividadValue::after{

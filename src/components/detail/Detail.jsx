@@ -12,7 +12,7 @@ function Detail() {
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    const dataCountry = async () => {
+    async function dataCountry() {
         try {
             let obj = {}
             const { data } = await axios(`${URL}/${ACTIVITIES_BY_COUNTRY}/${id}`);

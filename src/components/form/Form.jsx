@@ -5,7 +5,14 @@ import { HOME, COUNTRY, URL, ACTIVITIES, SUCCESSFORM, FORM } from '../../utils/p
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { actionDisplayMenuBar, actionDisplayFilters, actionRenderCountries, actionDisplayMobileFilters } from '../../redux/actions';
+import { 
+    actionDisplayMenuBar, 
+    actionDisplayFilters, 
+    actionRenderCountries, 
+    actionDisplayMobileFilters,
+    actionRemoveAllFilters,
+    actionFilterOnlyActivities
+} from '../../redux/actions';
 
 function Form() {
     const dispatch = useDispatch();
@@ -132,8 +139,11 @@ function Form() {
         dispatch(actionDisplayMenuBar(false));
         dispatch(actionDisplayMobileFilters(false));
         dispatch(actionDisplayFilters(false));
-        // con la línea de abajo nos aseguramos de que otras barSearch usados en otros componentes no borren países del estado global
-        // de lo contrario, en el home u otros componentes, no se mostrarían todos los países
+        // con la línea de abajo nos aseguramos de que en otros searchBar, como el de esta ruta, no aparezcan los países filtrados indeseadamente por culpa de otros componentes, como los filtros del home o del navBar.
+        // como en el formulario queremos ver la lista completa de países, y sin filtrar, debemos renderizar TODOS los países sin filtros anteriores.
+        // para esto, necesitamos remover todos los filtros y el estricto "FilterOnlyActivities" a penas renderizamos esta ruta.
+        dispatch(actionRemoveAllFilters());
+        dispatch(actionFilterOnlyActivities(false));
         dispatch(actionRenderCountries(initialCountries));
     }, []);
 
@@ -223,7 +233,7 @@ function Form() {
                             <p className={newActivity.temporada === 'Primavera' && styles.tempOn} onClick={handleInput} id='Primavera'>Primavera</p>
                         </div>
                     </div>
-                    {errors && <p className={styles.errorMessage}>{errors}</p>}
+                    {errors && <p id={styles.errorMessage}>{errors}</p>}
                     <button id={styles.submitButton} className={formCompleted ? styles.submitButtonOn : styles.submitButtonOff}>
                         Crear actividad
                     </button>

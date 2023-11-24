@@ -71,6 +71,16 @@ function NavBar() {
         }
     }
 
+    function handleIconClick() {
+        // Si ya estás en '/home', recargar la página.
+        if (window.location.pathname === HOME) {
+            window.location.reload();
+        } else {
+            // Si no estás en '/home', navega a '/home'.
+            navigate(HOME);
+        }
+    }
+
     useEffect(() => { // esto es para saber la cantidad de filtros aplicados
         const suma = activitiesFilter.length + difficultyFilter.length + seasonFilter.length + continentsFilter.length;
         setNumberOfFiltersSelected(suma);
@@ -80,7 +90,7 @@ function NavBar() {
         <div className={styles.mainView}>
             <div className={styles.navBarContainer}>
                 <div className={styles.leftElements}>
-                    <img onClick={() => navigate(HOME)} className={styles.countriesIcon} src={countriesIcon} alt="app icon" />
+                    <img onClick={handleIconClick} className={styles.countriesIcon} src={countriesIcon} alt="app icon" />
                     {location.pathname !== '/' ?
                         <div className={styles.searchBar}>
                             <input onChange={handleSearch} type="search" placeholder='Busca por país' />

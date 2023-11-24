@@ -395,14 +395,14 @@
 
 /* ERROR MESSAGE */
 
-.errorMessage{
+#errorMessage{
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    width: 100%;
     color: red;
     font-size: 18px;
-    font-weight: bold;
 }
 
 

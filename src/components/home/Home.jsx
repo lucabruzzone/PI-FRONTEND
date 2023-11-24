@@ -40,10 +40,9 @@ function Home() {
         dispatch(actionRenderCountries(initialCountries));
     }
 
-    function filterCountriesWActivities() {
-        dispatch(actionFilterOnlyActivities(initialCountries));
+    function filterCountriesWActivities(value) {
+        dispatch(actionFilterOnlyActivities(value));
         dispatch(actionRenderCountries(initialCountries));
-        /* dispatch(actionRenderCountries(initialCountries)); */
     }
 
     function alphabeticalSort(letter) {
@@ -76,6 +75,7 @@ function Home() {
     }, []);
 
     useEffect(() => {
+        // acá recuperamos la cantidad de filtros aplicados.
         const suma = activitiesFilter.length + difficultyFilter.length + seasonFilter.length + continentsFilter.length;
         setNumberOfFiltersSelected(suma);
     }, [activitiesFilter, difficultyFilter, seasonFilter, continentsFilter]);
@@ -109,8 +109,8 @@ function Home() {
                             </div>
                         </div>
                         <div id={styles.activitiesOnly}>
-                            <p onClick={filterCountriesWActivities} id={onlyCountriesWActivities ? styles.activitiesOnlyOffP : styles.activitiesOnlyOnP}>Todos los países</p>
-                            <p className={styles.activitiesOnlyDown} onClick={filterCountriesWActivities} id={onlyCountriesWActivities ? styles.activitiesOnlyOnP : styles.activitiesOnlyOffP}>Con actividades</p>
+                            <p onClick={() => filterCountriesWActivities(false)} id={onlyCountriesWActivities ? styles.activitiesOnlyOffP : styles.activitiesOnlyOnP}>Todos los países</p>
+                            <p className={styles.activitiesOnlyDown} onClick={() => filterCountriesWActivities(true)} id={onlyCountriesWActivities ? styles.activitiesOnlyOnP : styles.activitiesOnlyOffP}>Con actividades</p>
                         </div>
                     </div>
                 </div>

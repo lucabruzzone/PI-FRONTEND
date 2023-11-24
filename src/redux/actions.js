@@ -55,19 +55,19 @@ export const actionRenderCountries = (array) => { // action para modificar los p
 // las siguientes actions son para guardar o eliminar los filtros que va agregando o quitando el usuario:
 
 
-export const actionFilterActivities = (activity) => { // agrega
+export const actionFilterActivities = (activity) => { 
     return { type: FILTER_ACTIVITIES, payload: activity }
 }
 
-export const actionFilterDifficulty = (difficulty) => { // agrega
+export const actionFilterDifficulty = (difficulty) => { 
     return { type: FILTER_DIFFICULTY, payload: difficulty }
 }
 
-export const actionFilterSeason = (season) => { // agrega
+export const actionFilterSeason = (season) => { 
     return { type: FILTER_SEASON, payload: season }
 }
 
-export const actionFilterContinents = (continent) => { // agrega
+export const actionFilterContinents = (continent) => { 
     return { type: FILTER_CONTINENTS, payload: continent }
 }
 
@@ -75,18 +75,18 @@ export const actionRemoveAllFilters = (array) => { // action para remover todos 
     return { type: REMOVE_ALL_FILTERS, payload: array }
 }
 
-export const actionFilterOnlyActivities = (array) => { // agrega
-    return { type: FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES, payload: array }
+export const actionFilterOnlyActivities = (value) => { 
+    return { type: FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES, payload: value }
 }
 
-export const actionAlphabeticalSort = (letter) => { // agrega
+export const actionAlphabeticalSort = (letter) => { 
     return { type: FILTER_ALPHABETICAL_SORT, payload: letter }
 }
 
-export const actionAreaSort = (letter) => { // agrega
+export const actionAreaSort = (letter) => { 
     return { type: FILTER_AREA_SORT, payload: letter }
 }
 
-export const actionPopulationSort = (letter) => { // agrega
+export const actionPopulationSort = (letter) => {
     return { type: FILTER_POPULATION_SORT, payload: letter }
 }

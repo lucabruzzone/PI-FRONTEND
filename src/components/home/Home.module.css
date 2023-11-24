@@ -289,25 +289,12 @@
     animation: scrollReveal linear both;
     animation-timeline: view();
     animation-range: entry 15% cover 25%;
+    /* animation: scaleReveal .7s ease; */
 }
 
 @media only screen and (max-width: 500px) {
     .cardComponentBox {
         height: 100px;
-    }
-}
-
-@keyframes scrollReveal {
-    from {
-        opacity: 0;
-        scale: .8;
-        translate: 0 20px;
-    }
-
-    to {
-        opacity: 1;
-        scale: 1;
-        translate: 0 0;
     }
 }
 
@@ -363,8 +350,37 @@
     background: rgb(0, 0, 0);
     background: linear-gradient(117deg, rgba(0, 0, 0, 1) 18%, rgba(143, 143, 143, 1) 40%, rgba(189, 189, 189, 1) 54%, rgba(36, 36, 36, 1) 77%);
     background-size: 200% 200%;
-    animation: smoothGradient 2s ease-in-out infinite alternate;
+    animation: smoothGradient 2s ease-out infinite alternate;
     opacity: .5;
+}
+
+
+
+
+
+
+/* LOADING */
+
+.loadingContainer {
+    width: 100%;
+}
+
+
+
+/* EFFECTS */
+
+@keyframes scrollReveal {
+    from {
+        opacity: 0;
+        scale: .8;
+        translate: 0 20px;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+        translate: 0 0;
+    }
 }
 
 @keyframes moveEffect {
@@ -393,15 +409,16 @@
     }
 }
 
+@keyframes scaleReveal {
+    0% {
+        scale: .6;
+    }
 
+    60% {
+        scale: 1.02;
+    }
 
-
-
-
-
-
-/* LOADING */
-
-.loadingContainer {
-    width: 100%;
+    100% {
+        scale: 1;
+    }
 }

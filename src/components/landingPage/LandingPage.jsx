@@ -12,8 +12,7 @@ import { NavLink } from 'react-router-dom';
 
 function LandingPage() {
     const dispatch = useDispatch();
-    /* const videos = [seaVideo, newYorkVideo, desertVideo, spainVideo]; */
-    const videos = [img1, img2, img3, img4, img5];
+    const images = [img1, img2, img3, img4, img5];
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
     const videoRef = useRef(null);
 
@@ -22,12 +21,11 @@ function LandingPage() {
         //este dispatch hace que al NavBar le llegue un false del menú desplegable y de los filtros, evitando que se abran
         dispatch(actionDisplayMenuBar(false));
         dispatch(actionDisplayFilters(false));
-
         const interval = setInterval(() => {
-            setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
+            setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % images.length);
         }, 4000);
         return () => clearInterval(interval);
-    }, [videos]);
+    }, [images]);
 
     return (
         <div className={styles.mainView}>
@@ -37,7 +35,7 @@ function LandingPage() {
                 </NavLink>
             </div>
             <div ref={videoRef} className={styles.videoContainer}>
-                <img src={videos[currentVideoIndex]} type="" />
+                <img src={images[currentVideoIndex]} type="" />
             </div>
         </div>
     );

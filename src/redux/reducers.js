@@ -31,10 +31,10 @@ const initialState = {
     alphabeticalRender: '',
     areaRender: '',
     populationRender: '',
+    initialCountries: [],
+    renderCountries: [], // array principal de la app. Este array se modifica conforme el usuario decida filtrar u ordenar los países a lo largo de toda la app.
     saveInitialCountries: [], // reserva los países iniciales para volver a mostrarlos una vez que se cierre el filtro mas estricto de todos (Mostrar solo países con actividades).
     saveRenderCountries: [], // reserva algún cambio anterior de renderCountries para volver a mostrarlo en algún momento
-    renderCountries: [],
-    initialCountries: [],
     activitiesAvailable: [],
     activitiesFilter: [],
     difficultyFilter: [],
@@ -61,7 +61,7 @@ const rootReducer = (state = initialState, action) => {
         case INITIAL_COUNTRIES: // carga todos los países al iniciar la app
             return { ...state, initialCountries: action.payload, renderCountries: action.payload, saveInitialCountries: action.payload };
 
-        case ACTIVITIES_AVAILABLES: // estado que muestra la variedad de actividades que existen en total
+        case ACTIVITIES_AVAILABLES: // estado que muestra la variedad de actividades que existen en total, para así poder mostrárselas como opción al usuario en los filtros.
             return { ...state, activitiesAvailable: deleteDuplicatesActivities(action.payload) };
 
         case FILTER_ACTIVITIES: // actividades seleccionadas por el usuario en la sección filtros
@@ -88,6 +88,12 @@ const rootReducer = (state = initialState, action) => {
             }
             return { ...state, continentsFilter: state.continentsFilter.filter(continent => continent !== action.payload) };
 
+
+
+            
+
+            // los siguientes cases son de ordenamientos. 
+            // recordar que en cada case de esta sección, se limpian los otros ordenamientos del estado global, ya que por razones matemáticas, jamás pueden convivir dos tipos de ordenamientos al mismo tiempo.
         case FILTER_ALPHABETICAL_SORT:
             if (state.alphabeticalRender === action.payload) {
                 return { ...state, alphabeticalRender: '' }
@@ -109,28 +115,20 @@ const rootReducer = (state = initialState, action) => {
 
 
 
-        // LOS CASES DEBAJO DE ESTA LÍNEA SON EL RENDERIZADO RESULTANTE LUEGO DE EJECUTAR LOS FILTROS:
-        // en todos los casos, no se nos puede olvidar setear el estado global "pages" en "1" para que siempre se renderizen los países desde la página 1.
-
-
-        // el siguiente case renderiza los países de acuerdo a la suma de filtros que el usuario selecciona
-        // es complejo ya que acumula las seleciones en lugar de excluirlas
+            // el case siguiente es el patrón de diseño implementado para trabajar todos los filtros de manera integral, pasando por estaciones donde preguntamos si debemos o no, aplicar un filtro en específico.
+            // este patrón funciona con un array madre "dinamicArray" que se inicializa con un payload y va cambiando su valor conforme avanzamos en este case.
         case RENDER_COUNTRIES:
-            // primero preguntamos si hay filtros seleccionados. En caso de que no hayan, saltamos al final de este CASE ya que el usuario no está utilizando los filtros.
-            // si esque hay filtros seleccionados, comentamos a iterar cada lista de filtros.
-            if (action.payload[1] === 'searchBar') {
+            if (action.payload[1] === 'searchBar') { // si estamos usando un searchBar, llegamos hasta acá y no seguimos con los filtros.
                 return { ...state, page: 1, renderCountries: action.payload[0] };
             }
 
-            if (state.onlyCountriesWActivities) {
+            if (state.onlyCountriesWActivities) { // el primer filtro y el mas estricto de todos.
                 dinamicArray = activitiesOnly(action.payload);
             }
 
             if (state.activitiesFilter.length || state.difficultyFilter.length || state.seasonFilter.length || state.continentsFilter.length) {
 
-                // primero pregunta si esque hay filtros de actividades turísticas seleccionados
-                // para iterar en dos ciclos for las actividades de cada país y hacer un match con los filtros del usuario
-                // si se hace el match, entonces hacemos un push de ese país al array madre "newArray" que lo inicializamos antes de comenzar el SWITCH
+                // en esta estación, preguntamos si el usuario activó o desactivó los filtros de cada tipo (activities, difficulty, season, continents).
                 if (state.activitiesFilter.length) {
                     let newArray = [];
                     let initialCountries = dinamicArray;
@@ -149,7 +147,6 @@ const rootReducer = (state = initialState, action) => {
                     dinamicArray = newArray;
                 }
 
-                // luego hace lo mismo pero con los filtros de dificultad de las actividades turísticas
                 if (state.difficultyFilter.length) {
                     let newArray = [];
                     let initialCountries = dinamicArray;
@@ -168,7 +165,6 @@ const rootReducer = (state = initialState, action) => {
                     dinamicArray = newArray;
                 }
 
-                // luego exactamente lo mismo pero con los filtros de las temporadas (verano, otoño..etc)
                 if (state.seasonFilter.length) {
                     let newArray = [];
                     let initialCountries = dinamicArray;
@@ -187,7 +183,6 @@ const rootReducer = (state = initialState, action) => {
                     dinamicArray = newArray;
                 }
 
-                // y aquí sigue con los filtros de continentes
                 if (state.continentsFilter.length) {
                     let newArray = [];
                     let initialCountries = dinamicArray;
@@ -205,6 +200,8 @@ const rootReducer = (state = initialState, action) => {
                 }
             }
 
+            // una vez que ya tenemos el array madre filtrado, pasamos a los ordenamientos.
+            //estos, por razones lógicas, no pueden funcionar al mismo tiempo, pero ese asunto se maneja con anterioridad en otros cases.
             if (state.alphabeticalRender !== '') {
                 dinamicArray = alphabeticalSortFunction(dinamicArray, state.alphabeticalRender);
             }
@@ -228,8 +225,8 @@ const rootReducer = (state = initialState, action) => {
         case REMOVE_ALL_FILTERS: // remueve todos los filtros seleccionados
             return { ...state, page: 1, activitiesFilter: [], difficultyFilter: [], seasonFilter: [], continentsFilter: [] };
 
-        case FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES: // renderiza solo los países que cuentan con actividades turísticas
-            return { ...state, onlyCountriesWActivities: !state.onlyCountriesWActivities }
+        case FILTER_ONLY_COUNTRIES_WITH_ACTIVITIES: // renderiza solo los países que cuentan con actividades turísticas o vuelve a mostrar todos.
+            return { ...state, onlyCountriesWActivities: action.payload }
 
         default:
             return { ...state };

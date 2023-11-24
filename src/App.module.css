@@ -1,11 +1,18 @@
-.mainView{
+/* .mainView{
+    position: relative;
+    width: 100%;
+} */
+
+#mainView{
     position: relative;
     width: 100%;
 }
 
-/* .formView{
-    position: absolute;
+.animatedTransitionContainer{
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
-    z-index: 100;
-} */
+    z-index: 600;
+}
