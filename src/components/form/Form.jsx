@@ -33,7 +33,7 @@ function Form() {
     });
 
     function handleMiniTable() {
-        setDisplayedSelectedCountries(!displayedSelectedCountries)
+        setDisplayedSelectedCountries(!displayedSelectedCountries);
     }
 
     function handleInput(e) {
@@ -124,6 +124,7 @@ function Form() {
 
     function handleFocus() {
         setDisplayedTable(true);
+        setDisplayedSelectedCountries(false);
     }
 
     function handleBlur() {

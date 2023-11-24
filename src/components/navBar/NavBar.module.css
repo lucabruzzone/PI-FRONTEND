@@ -398,7 +398,7 @@ li {
 }
 
 .actividades::before {
-    content: url(../../img/list-ol-solid.svg);
+    content: url(../../img/plusIcon.svg);
     width: 17px;
     margin-right: 10px;
     opacity: var(--off-opacity);

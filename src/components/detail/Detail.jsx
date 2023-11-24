@@ -68,7 +68,7 @@ function Detail() {
                                 <div className={styles.params}>
                                     <p className={styles.actividadParam}>Actividad</p>
                                     <p className={styles.allParams}>Dificultad</p>
-                                    <p className={styles.allParams}>Duracion</p>
+                                    <p className={styles.allParams}>Duración</p>
                                     <p className={styles.allParams} id={styles.temporadaValue}>Temporada</p>
                                 </div>
                                 <div className={styles.valuesRowsTable}>
@@ -77,7 +77,7 @@ function Detail() {
                                             <div key={i} className={styles.eachRow}>
                                                 <p className={styles.actividadValue}>{activity.nombre}</p>
                                                 <p className={styles.allValue}>{activity.dificultad}</p>
-                                                <p className={styles.allValue}>{activity.duracion}</p>
+                                                <p className={styles.allValue}>{activity.duracion} hr</p>
                                                 <p className={styles.allValue} id={styles.temporadaValue}>{activity.temporada}</p>
                                             </div>
                                         )
